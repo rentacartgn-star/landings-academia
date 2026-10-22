@@ -1,0 +1,3 @@
+@import "tailwindcss";
+/* Estilos globales mínimos. Cada tema (A2) trae los suyos en themes/<siteId>/. */
+html, body { margin: 0; }

@@ -1,0 +1,10 @@
+node_modules
+.next
+.env*.local
+.env
+qa/test-results
+qa/playwright-report
+*.tsbuildinfo
+.vercel
+.next-*
+qa/screens/

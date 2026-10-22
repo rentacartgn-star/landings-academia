@@ -1,0 +1,31 @@
+{
+  "name": "web",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3150",
+    "build": "next build",
+    "start": "next start -p 3150",
+    "typecheck": "tsc -p . --noEmit"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.3.0",
+    "@la/config": "workspace:*",
+    "@la/contracts": "workspace:*",
+    "@supabase/supabase-js": "^2.118.0",
+    "gsap": "3.15.0",
+    "motion": "^14.6.0",
+    "next": "15.5.28",
+    "react": "19.1.10",
+    "react-dom": "19.1.10",
+    "server-only": "^0.0.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.14",
+    "@types/node": "^22.18.0",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.3"
+  }
+}

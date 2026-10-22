@@ -1,0 +1,52 @@
+/* [A5] Estilos de /legal. Prefijo lg- para no chocar con los temas. */
+.lg-root {
+  --lg-bg: #0b0d12;
+  --lg-card: rgba(255, 255, 255, 0.04);
+  --lg-border: rgba(255, 255, 255, 0.09);
+  --lg-text: #e7e9ee;
+  --lg-muted: #9aa1ad;
+  --lg-link: #9cc2ff;
+  min-height: 100dvh;
+  background:
+    radial-gradient(1200px 600px at 50% -200px, rgba(120, 140, 255, 0.08), transparent 70%),
+    var(--lg-bg);
+  color: var(--lg-text);
+  font-family: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.lg-wrap { max-width: 760px; margin: 0 auto; padding: 16px 16px 48px; }
+.lg-trust { margin: 0 0 16px; font-size: 13px; color: var(--lg-muted); text-align: center; }
+.lg-trust a { color: var(--lg-muted); }
+.lg-card {
+  background: var(--lg-card);
+  border: 1px solid var(--lg-border);
+  border-radius: 16px;
+  padding: 28px 22px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+@media (min-width: 640px) { .lg-card { padding: 40px 44px; } }
+.lg-brand { font-size: 14px; color: var(--lg-muted); text-decoration: none; }
+.lg-brand:hover { color: var(--lg-text); }
+.lg-head h1 { margin: 12px 0 4px; font-size: clamp(26px, 5vw, 34px); line-height: 1.2; letter-spacing: -0.02em; font-weight: 700; }
+.lg-meta { margin: 0 0 24px; font-size: 13px; color: var(--lg-muted); }
+.lg-body h2 { margin: 32px 0 8px; font-size: 18px; font-weight: 650; letter-spacing: -0.01em; }
+.lg-body p, .lg-body li { color: #d3d7de; overflow-wrap: anywhere; }
+.lg-body ul { padding-left: 20px; }
+.lg-body li { margin: 6px 0; }
+.lg-body a, .lg-nav a { color: var(--lg-link); text-underline-offset: 3px; }
+.lg-body code { font-size: 0.9em; padding: 1px 6px; border-radius: 6px; background: rgba(255, 255, 255, 0.07); }
+.lg-lead { font-size: 18px; color: var(--lg-text) !important; }
+.lg-dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 12px 0; padding: 16px; border: 1px solid var(--lg-border); border-radius: 12px; }
+.lg-dl dt { color: var(--lg-muted); font-size: 14px; }
+.lg-dl dd { margin: 0; overflow-wrap: anywhere; }
+.lg-table { overflow-x: auto; margin: 16px 0; }
+.lg-table table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 520px; }
+.lg-table th, .lg-table td { text-align: left; vertical-align: top; padding: 10px 8px; border-bottom: 1px solid var(--lg-border); }
+.lg-table th { color: var(--lg-muted); font-weight: 600; }
+.lg-todo { background: rgba(255, 196, 0, 0.14); color: #ffd666; border-radius: 4px; padding: 0 4px; font-size: 0.92em; }
+.lg-help li { margin: 10px 0; }
+.lg-nav { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; margin-top: 20px; font-size: 14px; }
+.lg-nav a[aria-current='page'] { color: var(--lg-text); text-decoration: none; font-weight: 600; }

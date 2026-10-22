@@ -1,0 +1,44 @@
+# Registro de revisiones de compliance (A5)
+
+Formato: una fila por pieza revisada. **Estado:** `OK` (se puede publicar tal cual, sujeto al gate P9), `CAMBIOS` (hay que aplicar los cambios antes de publicar) o `BLOQUEO` (no se puede publicar).
+Referencias normativas: ver `ES.md`, `MX.md`, etc. A5 no edita `content/`: los cambios se proponen aquí para A3.
+
+| # | Fecha | Pieza (archivo · clave) | Texto revisado | Estado | Cambio propuesto / motivo |
+|---|---|---|---|---|---|
+| _plantilla_ | AAAA-MM-DD | `content/<site>/<locale>.ts` · `hero.headlineVariants[0]` | "…" | OK / CAMBIOS / BLOQUEO | "…" · norma |
+
+---
+
+## Revisión 1 · 2026-10-22 · copy v1 de A3 (8 archivos + `_shared`)
+
+**Veredicto global: CAMBIOS (menores).** El enfoque es bueno y de bajo riesgo: "la casa que uso yo", el método **para elegir casas** (no para ganar), condiciones a la vista, "Si ya apuestas…", límites integrados y transparencia sobre la comisión. No hay promesas de ganancia, ni "gratis", ni testimonios de bono, ni urgencia falsa. Antes de publicar hay que aplicar los cambios de abajo y resolver los `TODO(sergi)` factuales (n.º 5 de TECNICAS.md: "la casa que uso yo" **tiene que ser cierto**, porque si no es publicidad engañosa, RD 958/2020 art. 8).
+
+### Respuestas a las preguntas de A3 (TECNICAS.md, "Para A5")
+1. **Bono en el CTA de control (ES): OK.** Los bonos de captación están permitidos desde la anulación del art. 13.1 (STS 2-4-2024). Condición del art. 13.4: las condiciones clave tienen que estar **junto a la promo**. En la tarjeta se cumple. Para el **sticky** y el **CTA del hero**, ver R1-03.
+2. **El miembro con notoriedad recomendando su casa (ES): OK, con condiciones.** El art. 15 está anulado. Aplica el art. 27 (tipster: su notoriedad tiene que venir de pronosticar y tiene que comprometerse con el operador a publicar sus resultados). Es un requisito contractual que no se resuelve con el copy: `TODO(sergi)` en `ES.md` §3.
+3. **"El botín" (Mapache): CAMBIOS.** Ver R1-05.
+4. **"Si ya apuestas…": OK.** Buen recurso para no incitar a empezar a jugar (art. 10.2.a).
+5. **`_shared/` (FAQ, pasos, disclaimer): OK**, salvo R1-07 y R1-08.
+
+| # | Fecha | Pieza | Texto revisado | Estado | Cambio propuesto / motivo |
+|---|---|---|---|---|---|
+| R1-01 | 2026-10-22 | `_shared/*` · FAQ legal, kyc, bonus, exit, limits, comisión; steps; disclaimer | (todo el bloque) | **OK** | Correcto y prudente. Me gusta "Puedes jugar sin bono" y el límite desde el primer día |
+| R1-02 | 2026-10-22 | `*/es-ES.ts`, `*/es-419.ts` · `hero.headlineVariants` (12 × 2) | "Esta es la casa de apuestas que uso yo." y demás | **OK** | Siempre que el miembro **use de verdad** esa casa (TODO 5). Kronos "Medido, no prometido": muy bien |
+| R1-03 | 2026-10-22 | todos · `stickyCta.label` | "Quiero mi bono en {operator}" | **CAMBIOS** | El sticky aparece lejos de las condiciones del bono (art. 13.4). **Opción A (preferida):** "Quiero mi cuenta en {operator}". **Opción B:** mantenerlo y que A2 pinte debajo, dentro del sticky, la microlínea "Se aplican condiciones" enlazada a `terms_url`. Lo mismo para `hero.ctaVariants[0]` y `finalCta.cta` si en ese bloque **no** aparecen `bonus_terms_short` y el enlace (petición a A2: que el hero muestre las condiciones cortas bajo el CTA) |
+| R1-04 | 2026-10-22 | `diamond/*` · `hero.ctaVariants[2]` | "Quiero empezar con {operator}" | **CAMBIOS** | "Empezar" invita a empezar a jugar y contradice el ángulo "si ya apuestas" (art. 10.2.a, prudencia). Propuesta: "Quiero ver la oferta de {operator}" |
+| R1-05 | 2026-10-22 | `mapache/*` · `hero.eyebrow` "El botín de Mapache", `ranking.title` "Mi botín", criterio 4 "no entra en el botín", `errors.offerUnavailable` "el botín de ahora"; `hero.sub` "sin cerraduras que forzar"; criterio 1 "puertas traseras"; `headlineVariants[0]` "He estudiado el terreno" | ver columna | **CAMBIOS** | Art. 9.2 RD 958/2020: no se puede **asociar el juego de forma positiva con conductas ilícitas**. El "ladrón elegante" con su botín, cerraduras y terreno estudiado es justo eso, aunque se refiera a la selección de casas. **Mantener la picardía sin el robo:** eyebrow → "La selección de Mapache"; ranking → "Mis casas fichadas"; "no entra en el botín" → "no entra en mi lista"; error → "para ver mi selección de ahora"; "sin cerraduras que forzar" → "sin trucos"; criterio 1 "Nada de webs raras ni puertas traseras" → "Nada de webs raras" (vale) o "Nada de webs sin licencia"; "He estudiado el terreno" → "Lo he mirado todo" o "Me he leído hasta la letra pequeña". "Fichada" (de fichar, elegir) **OK**. "A cara descubierta" **OK**. Aplicar también en es-419 |
+| R1-06 | 2026-10-22 | `kronos/*` · `hero.eyebrow` | "El método Kronos" | **CAMBIOS (menor)** | Aislado, "El método Kronos" puede leerse como un método para ganar (art. 10.2.f: apelar al conocimiento como clave del éxito). Propuesta: "El método Kronos para elegir casa" o "Mi método para elegir casa". El resto (01–04, "Medido, no prometido") **OK** |
+| R1-07 | 2026-10-22 | `_shared/es-419.ts` · `OFFER_CARD_419.licenseLabel` | "Licencia" | **CAMBIOS** | En MX el Reglamento de la LFJS (art. 9 fr. III) habla de **número de permiso**. Propuesta: que la etiqueta salga del país ("Permiso SEGOB" en MX, "Licencia JCJ" en PA, "Licencia" en el resto). Si el contrato no lo permite, "Licencia / permiso" |
+| R1-08 | 2026-10-22 | `_shared/es-419.ts` · `disclaimer419` | "Solo para mayores de edad según la ley de tu país." | **OK** | Correcto: la edad concreta la da `compliance.minAge` en la barra. Sugerencia opcional: añadir "Publicidad." al principio (ya sale en `mandatoryMessages`) |
+| R1-09 | 2026-10-22 | `donpool/*` · "El club de Don Pool", "Socios con licencia", "En este club solo entran…" | ver columna | **OK (vigilar)** | El tono de "club exclusivo" no puede derivar en superioridad social de quien juega (art. 9.2). Tal como está, el club es de **casas**, no de jugadores: OK. No añadir "miembros VIP", "solo para los mejores" ni nada parecido |
+| R1-10 | 2026-10-22 | todos · `hero.trustLine` | "TODO(sergi) seguidores… · TODO(sergi) años analizando partidos" | **BLOQUEO hasta tener datos** | No se publica con `TODO` ni con cifras sin verificar (art. 8, veracidad). "Años analizando partidos" refuerza que su notoriedad viene de pronosticar (art. 27.2): bien |
+| R1-11 | 2026-10-22 | todos · `meta.*` | títulos y OG | **OK** | Sin "pick", "quiniela" ni "gratis". Llevan "Solo +18" o "Solo mayores de edad" y "Juega con responsabilidad" |
+| R1-12 | 2026-10-22 | todos · `howIChoose` criterio 3 | "Retiradas sin sorpresas… TODO(sergi)" | **BLOQUEO hasta tener datos** | El plazo de retirada tiene que ser real y comprobable. Kronos dice "comprobado con mi cuenta": tiene que serlo |
+| R1-13 | 2026-10-22 | todos · `offerCard.ratingLabel` | "Nota de X" o "Calificación de X" | **OK** | Que la nota sea un criterio real del miembro. Confirmar con el operador que permite mostrarla (`creativos-operadores.md` n.º 7) |
+| R1-A3 | 2026-10-22 | A3 · aplicación de R1-03 a R1-07 | `stickyCta.label` (8) → "Quiero mi cuenta en {operator}"; Diamond `ctaVariants[2]` → "Quiero ver la oferta de {operator}"; Mapache (ES y 419): eyebrow "La selección de Mapache", ranking "Mis casas fichadas", "no entra en mi lista", "para ver mi selección de ahora", "sin trucos", "Nada de webs sin licencia", criterio 1 "Con licencia o nada", titular 0 "Me he leído hasta la letra pequeña"; Kronos eyebrow "Mi método para elegir casa"; `licenseLabel` "Licencia" genérico en ES y 419 (manda `compliance.operatorLicenseLabel`) | **APLICADO** | `verify.ts` ahora falla si el sticky lleva "bono" o si aparecen botín, cerradura, puerta trasera, robo, golpe o "método Kronos" suelto. Pasa en las 8 combinaciones. Pendiente de A2: condiciones cortas bajo el CTA del hero y del final (R1-03) |
+
+### Notas para A2 (estética), derivadas de la normativa
+- **Nada de imágenes de dinero, fajos, lingotes, joyas como premio, coches o relojes de lujo** (art. 9.2). En **Diamond**, el diamante como **marca** o icono vale, pero no como "lo que te llevas".
+- **Mapache:** sin antifaz de ladrón ni saco de botín. Que el personaje sea **adulto, no un dibujo infantil ni una mascota tierna** (art. 11.2.b).
+- Sticky CTA: que no tape contenido ni impida navegar (art. 23.3).
+- Barra superior: `compliance.trustBarText` + `helpline` + logo y enlace del regulador; `mandatoryMessages` visibles (footer o bajo la oferta).
