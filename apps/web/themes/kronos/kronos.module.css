@@ -903,7 +903,7 @@
 
 /* ───────── Keyframes ───────── */
 @keyframes kr-rot { to { transform: rotate(360deg); } }
-@keyframes kr-rise { from { opacity: 0; transform: translateY(12px); } }
+@keyframes kr-rise { from { transform: translateY(12px); } }
 @keyframes kr-shine {
   0% { transform: translateX(0) skewX(-18deg); }
   26%, 100% { transform: translateX(560%) skewX(-18deg); }
@@ -994,4 +994,36 @@
   }
   .dialCenter .shieldWrap { --sw: 74%; width: 74%; filter: drop-shadow(0 20px 50px rgba(0, 0, 0, .7)) drop-shadow(0 0 40px var(--kr-lume-soft)); }
   .dialCenter .shield { width: 100%; }
+}
+
+/* ───────── Ronda 3: CTA del hero entero a 390×664 ───────── */
+.creatorEyebrow { display: none; }
+@media (max-width: 959px) {
+  .root:not([data-layout='fallback']) .creator { --sw: 46px; gap: 12px; }
+  .root:not([data-layout='fallback']) .handle { display: none; }
+  .root:not([data-layout='fallback']) .creatorEyebrow {
+    display: block;
+    margin-top: 2px;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--kr-accent);
+  }
+  .root:not([data-layout='fallback']) .eyebrow { display: none; }
+  .root:not([data-layout='fallback']) .h1 { margin-top: 16px; font-size: clamp(32px, 8.7vw, 40px); line-height: 1; }
+  .root:not([data-layout='fallback']) .sub { font-size: 14.5px; line-height: 1.45; margin-top: 10px; }
+  .top { padding-top: 12px; }
+  .hero { padding-top: 16px; }
+  .trust { min-height: 28px; padding: 4px 12px; font-size: 11px; line-height: 1.35; }
+  .regulator { min-height: 24px; }
+  .heroSingle .heroCard { margin-top: 16px; }
+  .heroSingle .card { padding: 16px 18px 18px; }
+  .heroSingle .logo { width: 72px; padding: 4px; border-radius: 12px; }
+  .heroSingle .opName { font-size: 19px; }
+  .heroSingle .opRow { gap: 12px; }
+  .heroSingle .bonus { margin-top: 12px; padding-top: 14px; }
+  .heroSingle .bonusHead { font-size: 22px; margin-top: 4px; }
+  .heroSingle .bonus .cta { margin-top: 12px; min-height: 54px; }
+  .strip { margin-top: 18px; }
 }

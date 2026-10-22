@@ -91,11 +91,12 @@ export function KronosLanding(p: LandingProps) {
   );
 
   // ── Tarjeta de oferta destacada (single y #1 del ranking) ──
-  const featured = (o: Offer, placement: Placement, opts: { id?: string; badge?: string; label: string }) => {
+  const featured = (o: Offer, placement: Placement, opts: { id?: string; badge?: string; label: string; inHero?: boolean }) => {
     const op = p.operators[o.operatorId];
     const license = op?.licenseByCountry[p.country];
     return (
-      <OfferViewTracker offerId={o.id} rank={o.rank} className={s.popCard} data-pop="" suppressHydrationWarning style={stagger(1)}>
+      // En el hero no hay pop-in: nada del primer viewport empieza con opacity 0 (LCP).
+      <OfferViewTracker offerId={o.id} rank={o.rank} className={s.popCard} {...(opts.inHero ? {} : { 'data-pop': '', style: stagger(1) })} suppressHydrationWarning>
         <article className={cx(s.glass, s.card, s.cardFeatured)}>
           <span className={s.specular} aria-hidden="true" />
           {total > 1 || opts.badge ? (
@@ -196,7 +197,9 @@ export function KronosLanding(p: LandingProps) {
       <Shield src={p.site.avatarUrl} alt={p.site.memberName} priority />
       <span className={s.creatorText}>
         <strong>{p.site.brandName}</strong>
-        <span>{p.site.handle}</span>
+        <span className={s.handle}>{p.site.handle}</span>
+        {/* Móvil: el eyebrow sube aquí para que el CTA del hero quepa en 664 px */}
+        <span className={s.creatorEyebrow} aria-hidden="true">{c.hero.eyebrow}</span>
       </span>
     </div>
   );
@@ -294,7 +297,7 @@ export function KronosLanding(p: LandingProps) {
           </div>
 
           {!isFallback && top && topOp && p.layout === 'single' ? (
-            <div className={s.heroCard}>{featured(top, 'single', { id: HERO_CTA_ID, label: heroLabel })}</div>
+            <div className={s.heroCard}>{featured(top, 'hero', { id: HERO_CTA_ID, label: heroLabel, inHero: true })}</div>
           ) : null}
         </section>
 
