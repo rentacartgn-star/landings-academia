@@ -1,4 +1,4 @@
-// [A2] DonPool · "La mesa privada". Server Component: la página entera es HTML + CSS; el único JS de cliente
+// [A2] DonPool · "Antihéroe en el campo" (ronda 2: negro, rojo del logo y blanco). Server Component: la página entera es HTML + CSS; el único JS de cliente
 // son las primitivas de components/ui y dos scripts inline mínimos (motion y modo lite).
 import type { CSSProperties, ReactNode } from 'react';
 import { fill, type LandingProps, type Offer } from '@la/contracts';
@@ -8,7 +8,7 @@ import { inter } from './font';
 import { css } from './styles';
 import { HEAD_SCRIPT, TAIL_SCRIPT } from './scripts';
 import { cssVars } from './tokens';
-import { Arrow, Ball, Bonus, OpHead, Sights, SocialIcon, Specs, rankKind, splitHeadline } from './parts';
+import { Arrow, Bonus, Football, MemberLogo, OpHead, Pitch, RankTag, Slash, SocialIcon, Specs, splitHeadline } from './parts';
 
 const HERO_CTA_ID = 'dp-hero-cta';
 const SOCIAL_NAMES: Record<string, string> = { tiktok: 'TikTok', instagram: 'Instagram', telegram: 'Telegram', youtube: 'YouTube' };
@@ -38,21 +38,19 @@ export function Landing(p: LandingProps) {
       <script dangerouslySetInnerHTML={{ __html: HEAD_SCRIPT }} />
       <PageTracker site={p.site.id} country={p.country} locale={p.locale} variant={p.variant} />
 
-      {/* Fondo fijo: tapete con fieltro, luz de lámpara y viñeta */}
+      {/* Fondo fijo: negro profundo, focos rojos de estadio, cortes diagonales y grano */}
       <div className="dp-bg" aria-hidden="true">
         <span className="dp-lamp dp-lamp--a" />
         <span className="dp-lamp dp-lamp--b" />
         <span className="dp-lamp dp-lamp--c" />
+        <span className="dp-cuts" />
       </div>
 
       <TrustBar p={p} />
 
       <header className="dp-top">
         <div className="dp-who">
-          <span className="dp-avatar dp-avatar--sm">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={p.site.avatarUrl} alt={p.site.memberName} width={40} height={40} />
-          </span>
+          <MemberLogo p={p} size={40} priority className="dp-logo--sm" />
           <span className="dp-who__txt">
             <strong>{p.site.brandName}</strong>
             <span>{p.site.handle}</span>
@@ -78,10 +76,10 @@ export function Landing(p: LandingProps) {
             <Faq p={p} />
             <section id="dp-final" className="dp-sec dp-final">
               <div className="dp-glass dp-final__card" data-pop>
-                <div className="dp-final__balls" aria-hidden="true">
-                  <Ball kind="eight" n={8} size={64} className="dp-final__eight" />
-                  <Ball kind="cue" size={46} className="dp-final__cue" />
-                </div>
+                <span className="dp-final__fx" aria-hidden="true">
+                  <Football size={64} className="dp-final__ball" />
+                </span>
+                <Slash />
                 <h2 className="dp-h2">{c.finalCta.title}</h2>
                 <p className="dp-lede">{c.finalCta.sub}</p>
                 <TrackedCta className="dp-cta dp-cta--lg" offerId={top.id} rank={top.rank} placement="final">
@@ -202,17 +200,22 @@ function Hero({ p, offer, countryName }: { p: LandingProps; offer: Offer; countr
     <section className="dp-hero">
       <div className="dp-hero__copy">
         <p className="dp-eyebrow">
-          <Sights /> {c.hero.eyebrow}
+          <Slash /> {c.hero.eyebrow}
         </p>
         <Headline text={c.hero.headlineVariants[p.variant]} />
-        <p className="dp-lede dp-hero__sub">{c.hero.sub}</p>
       </div>
       <div className="dp-stage">
-        {/* Bolas: unas detrás del cristal (se ven refractadas), otras delante */}
-        <span className="dp-par dp-par--1"><span className="dp-in dp-in--1"><Ball kind="cue" size={92} className="dp-float" /></span></span>
-        <span className="dp-par dp-par--2"><span className="dp-in dp-in--2"><Ball kind="brass" n={1} size={70} className="dp-float dp-float--b" /></span></span>
-        <span className="dp-par dp-par--3"><span className="dp-in dp-in--3"><Ball kind="eight" n={8} size={78} className="dp-float dp-float--c" /></span></span>
-        <span className="dp-par dp-par--4"><span className="dp-in dp-in--4"><Ball kind="stripe" n={11} size={48} className="dp-float dp-float--b" /></span></span>
+        {/* El logo del canal detrás del cristal: la tarjeta lo refracta en rojo */}
+        <div className="dp-crest dp-par">
+          <Pitch />
+          <span className="dp-crest__glow" aria-hidden="true" />
+          <span className="dp-in dp-in--1">
+            <MemberLogo p={p} size={300} priority className="dp-logo--hero" />
+          </span>
+          <span className="dp-crest__ball dp-in dp-in--3" aria-hidden="true">
+            <Football size={54} className="dp-float" />
+          </span>
+        </div>
         <div className="dp-stage__card">
           {p.layout === 'single' ? (
             <OfferViewTracker offerId={offer.id} rank={offer.rank} className="dp-track">
@@ -224,6 +227,7 @@ function Hero({ p, offer, countryName }: { p: LandingProps; offer: Offer; countr
         </div>
       </div>
       <div className="dp-hero__foot">
+        <p className="dp-lede dp-hero__sub">{c.hero.sub}</p>
         <p className="dp-trustline">{c.hero.trustLine}</p>
         <CountryLine p={p} countryName={countryName} />
       </div>
@@ -237,7 +241,7 @@ function SingleSpec({ p, offer }: { p: LandingProps; offer: Offer }) {
   return (
     <section className="dp-sec dp-spec">
       <div className="dp-spec__head" data-pop>
-        <Ball kind={rankKind(1)} n={1} size={56} />
+        <RankTag rank={1} large />
         <OpHead p={p} op={op} large />
       </div>
       <div className="dp-glass dp-spec__card" data-pop style={i(1)}>
@@ -264,7 +268,7 @@ function Ranking({ p }: { p: LandingProps }) {
   return (
     <section className="dp-sec dp-ranking">
       <header className="dp-sec__head" data-pop>
-        <Sights />
+        <Slash />
         <h2 className="dp-h2">{c.ranking.title}</h2>
         <p className="dp-lede">{c.ranking.sub}</p>
       </header>
@@ -281,12 +285,14 @@ function Ranking({ p }: { p: LandingProps }) {
 function Featured({ p, offer }: { p: LandingProps; offer: Offer }) {
   const op = p.operators[offer.operatorId]!;
   return (
-    <OfferViewTracker offerId={offer.id} rank={offer.rank} className="dp-track" data-pop style={i(0)}>
-      <article className="dp-glass dp-feat">
+    <OfferViewTracker offerId={offer.id} rank={offer.rank} className="dp-track">
+      <article className="dp-glass dp-feat" data-pop style={i(0)}>
         <span className="dp-badge">
-          <Sights /> {p.content.ranking.myPickBadge}
+          {p.content.ranking.myPickBadge}
         </span>
-        <Ball kind={rankKind(offer.rank)} n={offer.rank} size={84} className="dp-feat__ball" />
+        <span className="dp-feat__rank">
+          <RankTag rank={offer.rank} large />
+        </span>
         <OpHead p={p} op={op} large />
         <div className="dp-feat__body">
           <Bonus p={p} offer={offer} size="md" />
@@ -304,10 +310,10 @@ function Featured({ p, offer }: { p: LandingProps; offer: Offer }) {
 function Compact({ p, offer, idx }: { p: LandingProps; offer: Offer; idx: number }) {
   const op = p.operators[offer.operatorId]!;
   return (
-    <OfferViewTracker offerId={offer.id} rank={offer.rank} className="dp-track" data-pop style={i(idx)}>
-      <article className="dp-glass dp-compact">
+    <OfferViewTracker offerId={offer.id} rank={offer.rank} className="dp-track">
+      <article className="dp-glass dp-compact" data-pop style={i(idx)}>
         <div className="dp-compact__top">
-          <Ball kind={rankKind(offer.rank)} n={offer.rank} size={46} />
+          <RankTag rank={offer.rank} />
           <OpHead p={p} op={op} />
         </div>
         <Bonus p={p} offer={offer} size="sm" />
@@ -326,7 +332,7 @@ function HowIChoose({ p }: { p: LandingProps }) {
   return (
     <section className="dp-sec dp-how">
       <header className="dp-sec__head" data-pop>
-        <Sights />
+        <Slash />
         <h2 className="dp-h2">{h.title}</h2>
       </header>
       <ol className={`dp-how__grid dp-how__grid--${h.criteria.length}`}>
@@ -349,7 +355,7 @@ function Steps({ p }: { p: LandingProps }) {
   return (
     <section className="dp-sec dp-steps-sec">
       <header className="dp-sec__head" data-pop>
-        <Sights />
+        <Slash />
         <h2 className="dp-h2">{s.title}</h2>
         <p className="dp-estimate">
           <span className="dp-estimate__dot" aria-hidden="true" />
@@ -359,11 +365,13 @@ function Steps({ p }: { p: LandingProps }) {
       <ol className="dp-steps" data-pop>
         <span className="dp-steps__line" aria-hidden="true" />
         <span className="dp-steps__cue" aria-hidden="true">
-          <Ball kind="cue" size={30} />
+          <Football size={30} />
         </span>
         {s.items.map((it, n) => (
           <li key={it.title} className="dp-step">
-            <Ball kind={rankKind(n + 1)} n={n + 1} size={56} className="dp-step__ball" />
+            <span className="dp-step__n" aria-hidden="true">
+              {n + 1}
+            </span>
             <div>
               <h3 className="dp-h3">{it.title}</h3>
               <p>{it.body}</p>
@@ -380,7 +388,7 @@ function Faq({ p }: { p: LandingProps }) {
   return (
     <section className="dp-sec dp-faq">
       <header className="dp-sec__head" data-pop>
-        <Sights />
+        <Slash />
         <h2 className="dp-h2">{f.title}</h2>
       </header>
       <div className="dp-glass dp-faq__list" data-pop style={i(1)}>
@@ -436,15 +444,14 @@ function FallbackHero({ p, countryName }: { p: LandingProps; countryName: string
   return (
     <section className="dp-hero dp-hero--fallback">
       <div className="dp-fb__stage" aria-hidden="true">
-        <span className="dp-in dp-in--2"><Ball kind="eight" n={8} size={70} className="dp-float dp-fb__b8" /></span>
-        <span className="dp-in dp-in--3"><Ball kind="brass" n={1} size={46} className="dp-float dp-float--b dp-fb__b1" /></span>
+        <Pitch />
       </div>
-      <span className="dp-avatar dp-avatar--xl">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={p.site.avatarUrl} alt={p.site.memberName} width={132} height={132} />
+      <span className="dp-fb__crest dp-in dp-in--1">
+        <span className="dp-crest__glow" aria-hidden="true" />
+        <MemberLogo p={p} size={200} priority className="dp-logo--hero" />
       </span>
       <p className="dp-eyebrow">
-        <Sights /> {p.content.hero.eyebrow}
+        <Slash /> {p.content.hero.eyebrow}
       </p>
       <Headline text={f.title} />
       <p className="dp-lede">{f.body}</p>
@@ -484,11 +491,11 @@ function Footer({ p, countryName }: { p: LandingProps; countryName: string }) {
     <footer className="dp-foot">
       <div className="dp-foot__inner">
         <div className="dp-foot__brand">
-          <Ball kind="cue" size={22} />
+          <MemberLogo p={p} size={32} />
           <strong>{p.site.brandName}</strong>
         </div>
         <p className="dp-foot__tag">{p.content.footer.tagline}</p>
-        <Sights className="dp-foot__sights" />
+        <Slash className="dp-foot__sights" />
         <p className="dp-foot__disc">{p.content.footer.disclaimer}</p>
         <nav className="dp-foot__legal">
           {k.legalLinks.map((l) => (

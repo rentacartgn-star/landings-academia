@@ -1,45 +1,41 @@
-// [A2] DonPool · tokens. Toda la paleta vive aquí: cuando lleguen las capturas del canal se cambia solo este archivo.
+// [A2] DonPool · tokens (ronda 2: paleta sacada del logo del canal). Toda la paleta vive aquí.
 import type { ThemeTokens } from '@la/contracts';
 
-/** Paleta "mesa privada": tapete profundo, latón, crema y marfil de bola blanca (el único color de acción). */
+/** Negro profundo + rojo del logo (único color de acción) + blanco. */
 export const palette = {
-  // Tapete, de la sombra bajo la baranda a la luz de la lámpara
-  felt0: '#030D09',
-  felt1: '#05150F',
-  felt2: '#0A2A1E',
-  felt3: '#11402D',
-  felt4: '#1D6244',
-  // Latón
-  brassHi: '#F1DCA6',
-  brass: '#C9A465',
-  brassLo: '#8E6B34',
-  // Crema (texto) y marfil (CTA)
-  cream: '#F4ECDC',
-  creamMuted: 'rgba(244,236,220,.68)',
-  creamFaint: 'rgba(244,236,220,.42)',
-  ivory: '#FBF6EA',
-  ivoryLo: '#E8DCC2',
-  ctaText: '#062016',
-  // Bolas (tonos de club, nada chillón)
-  ballInk: '#1E3159',
-  ballOxblood: '#6E2430',
-  ballPlum: '#4A2A5E',
-  ballEight: '#0E1110',
+  // Negros
+  ink0: '#030304',
+  ink1: '#070708',
+  ink2: '#0E0E10',
+  ink3: '#17171A',
+  // Rojo del logo (muestra media del aro ≈ #DE030A; afinado a #E3121B)
+  redHi: '#FF3A3F',
+  red: '#E3121B',
+  redLo: '#9E0A10',
+  redDeep: '#3A0306',
+  // Blancos
+  white: '#FFFFFF',
+  text: '#F5F4F2',
+  textMuted: 'rgba(245,244,242,.66)',
+  textFaint: 'rgba(245,244,242,.62)', // ≥ 4,5:1 sobre el negro (F8)
+  steel: '#8C8C94',
+  ctaText: '#FFFFFF',
   // Cristal
-  glass: 'rgba(10,36,26,.50)',
-  glassSolid: 'rgba(9,32,23,.96)',
-  hairline: 'rgba(244,236,220,.14)',
+  glass: 'rgba(18,18,21,.52)',
+  glassRed: 'rgba(227,18,27,.10)',
+  glassSolid: 'rgba(14,14,16,.96)',
+  hairline: 'rgba(245,244,242,.12)',
 } as const;
 
 export const tokens: ThemeTokens = {
   colors: {
-    bg: palette.felt1,
-    bgElevated: palette.felt2,
+    bg: palette.ink1,
+    bgElevated: palette.ink2,
     surface: palette.glass,
-    text: palette.cream,
-    textMuted: palette.creamMuted,
-    accent: palette.brass,
-    cta: palette.ivory,
+    text: palette.text,
+    textMuted: palette.textMuted,
+    accent: palette.red,
+    cta: palette.red,
     ctaText: palette.ctaText,
     border: palette.hairline,
   },
@@ -51,12 +47,10 @@ export const tokens: ThemeTokens = {
 export function cssVars(): string {
   const p = palette;
   return [
-    `--felt0:${p.felt0}`, `--felt1:${p.felt1}`, `--felt2:${p.felt2}`, `--felt3:${p.felt3}`, `--felt4:${p.felt4}`,
-    `--brass-hi:${p.brassHi}`, `--brass:${p.brass}`, `--brass-lo:${p.brassLo}`,
-    `--cream:${p.cream}`, `--cream-muted:${p.creamMuted}`, `--cream-faint:${p.creamFaint}`,
-    `--ivory:${p.ivory}`, `--ivory-lo:${p.ivoryLo}`, `--cta-text:${p.ctaText}`,
-    `--ball-ink:${p.ballInk}`, `--ball-ox:${p.ballOxblood}`, `--ball-plum:${p.ballPlum}`, `--ball-eight:${p.ballEight}`,
-    `--glass:${p.glass}`, `--glass-solid:${p.glassSolid}`, `--hairline:${p.hairline}`,
+    `--ink0:${p.ink0}`, `--ink1:${p.ink1}`, `--ink2:${p.ink2}`, `--ink3:${p.ink3}`,
+    `--red-hi:${p.redHi}`, `--red:${p.red}`, `--red-lo:${p.redLo}`, `--red-deep:${p.redDeep}`,
+    `--white:${p.white}`, `--text:${p.text}`, `--text-muted:${p.textMuted}`, `--text-faint:${p.textFaint}`, `--steel:${p.steel}`,
+    `--cta-text:${p.ctaText}`, `--glass:${p.glass}`, `--glass-red:${p.glassRed}`, `--glass-solid:${p.glassSolid}`, `--hairline:${p.hairline}`,
     `--r-card:${tokens.radius.card}`, `--r-pill:${tokens.radius.pill}`,
   ].join(';');
 }

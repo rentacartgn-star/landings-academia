@@ -2,32 +2,86 @@
 import type { CSSProperties, ReactNode } from 'react';
 import type { LandingProps, Offer, Operator } from '@la/contracts';
 
-export type BallKind = 'cue' | 'eight' | 'brass' | 'ink' | 'ox' | 'plum' | 'stripe';
-
-/** Bola de billar con reflejo 3D falso, solo CSS. Decorativa. */
-export function Ball({ kind, n, size, className = '', style }: { kind: BallKind; n?: number; size?: number; className?: string; style?: CSSProperties }) {
+/** Corte diagonal: el motivo gráfico del tema (tres trazos inclinados, el primero en rojo). */
+export function Slash({ className = '' }: { className?: string }) {
   return (
-    <span
-      aria-hidden="true"
-      className={`dp-ball dp-ball--${kind} ${className}`}
-      data-n={n}
-      style={{ ...(size ? ({ '--s': `${size}px` } as CSSProperties) : null), ...style }}
-    />
+    <span aria-hidden="true" className={`dp-slash ${className}`}>
+      <i />
+      <i />
+      <i />
+    </span>
   );
 }
 
-/** Color de bola por posición del ranking (1 latón, 2 tinta, 3 burdeos, 4 ciruela). */
-export function rankKind(rank: number): BallKind {
-  return (['brass', 'ink', 'ox', 'plum'] as const)[rank - 1] ?? 'brass';
+/** Dorsal del ranking: número grande inclinado sobre un corte diagonal. */
+export function RankTag({ rank, large }: { rank: number; large?: boolean }) {
+  return (
+    <span aria-hidden="true" className={`dp-rank${rank === 1 ? ' dp-rank--1' : ''}${large ? ' dp-rank--lg' : ''}`}>
+      <span>{String(rank).padStart(2, '0')}</span>
+    </span>
+  );
 }
 
-/** Marcadores de baranda (los "diamantes" de la mesa) como separador. */
-export function Sights({ className = '' }: { className?: string }) {
+/** Balón clásico (pentágonos), dibujo propio. Decorativo. */
+export function Football({ size = 32, className = '' }: { size?: number; className?: string }) {
   return (
-    <span aria-hidden="true" className={`dp-sights ${className}`}>
-      <i />
-      <i />
-      <i />
+    <svg aria-hidden="true" className={`dp-ballfx ${className}`} width={size} height={size} viewBox="0 0 64 64">
+      <defs>
+        <radialGradient id="dpBallG" cx="36%" cy="30%" r="75%">
+          <stop offset="0" stopColor="#fff" />
+          <stop offset=".62" stopColor="#e9e9ec" />
+          <stop offset="1" stopColor="#8d8d95" />
+        </radialGradient>
+      </defs>
+      <circle cx="32" cy="32" r="30" fill="url(#dpBallG)" />
+      <path fill="#0c0c0e" d="M32 21.5l9 6.5-3.4 10.6H26.4L23 28z" />
+      <path
+        fill="#0c0c0e"
+        d="M32 2.2c3.2 0 6.3.5 9.2 1.5L32 10.4l-9.2-6.7A30 30 0 0 1 32 2.2zM56.5 15.6a30 30 0 0 1 5 13.5l-8.8 3-3.5-10.6zM58 46.3a30 30 0 0 1-9.7 10.9l-3.2-9.3 9-6.6zM19 57.4a30 30 0 0 1-9.9-10.6l4-6.4 8.9 6.6zM2.6 29.3a30 30 0 0 1 5.1-13.6l6.6 6.3-3.5 10.6z"
+      />
+      <path
+        stroke="#0c0c0e"
+        strokeWidth="1.4"
+        fill="none"
+        d="M32 10.4v11.1M41 28l11.2-6.1M37.6 38.6l7.5 9.3M26.4 38.6l-4.4 8.4M23 28l-8.7-6M22.8 3.7l9.2 6.7 9.2-6.7"
+      />
+      <circle cx="32" cy="32" r="30" fill="none" stroke="rgba(0,0,0,.25)" strokeWidth="1" />
+      <ellipse cx="23" cy="17" rx="10" ry="6" fill="#fff" opacity=".55" transform="rotate(-30 23 17)" />
+    </svg>
+  );
+}
+
+/** Líneas de campo (medio campo + círculo central) detrás del logo. */
+export function Pitch({ className = '' }: { className?: string }) {
+  return (
+    <svg aria-hidden="true" className={`dp-pitch ${className}`} viewBox="0 0 600 600" fill="none" preserveAspectRatio="xMidYMid slice">
+      <g stroke="rgba(255,255,255,.09)" strokeWidth="1.5">
+        <circle cx="300" cy="300" r="214" />
+        <circle cx="300" cy="300" r="4" fill="rgba(255,255,255,.18)" />
+        <path d="M300 -40v680" />
+        <circle cx="300" cy="300" r="290" strokeDasharray="2 10" stroke="rgba(227,18,27,.35)" />
+      </g>
+    </svg>
+  );
+}
+
+/** Logo del canal tal cual (circular). `priority` si está en el primer viewport. */
+export function MemberLogo({ p, size, priority, className = '' }: { p: LandingProps; size: number; priority?: boolean; className?: string }) {
+  const src = p.site.avatarUrl;
+  const small = /logo\.webp$/.test(src) ? src.replace(/logo\.webp$/, 'logo-256.webp') : null;
+  return (
+    <span className={`dp-logo ${className}`} style={{ '--ls': `${size}px` } as CSSProperties}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        srcSet={small ? `${small} 256w, ${src} 640w` : undefined}
+        sizes={`${size}px`}
+        alt={p.site.brandName}
+        width={size}
+        height={size}
+        decoding="async"
+        {...(priority ? { fetchPriority: 'high' as const } : { loading: 'lazy' as const })}
+      />
     </span>
   );
 }
@@ -54,7 +108,7 @@ export function formatDate(iso: string, locale: string): string {
   }
 }
 
-/** Placa de latón con el logo del operador. */
+/** Placa clara con el logo del operador. */
 export function Plaque({ op, large }: { op: Operator; large?: boolean }) {
   return (
     <span className={`dp-plaque${large ? ' dp-plaque--lg' : ''}`}>
@@ -128,7 +182,7 @@ export function Specs({ p, offer, op, withLicense = true }: { p: LandingProps; o
   );
 }
 
-/** Nota 0–5 con cinco bolas que se llenan. */
+/** Nota 0–5 con cinco puntos que se llenan. */
 export function Rating({ value, locale }: { value: number; locale: string }) {
   const fmt = new Intl.NumberFormat(locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(value);
   return (
