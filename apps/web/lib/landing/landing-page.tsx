@@ -1,21 +1,16 @@
-// [A1 monta, A2 pinta] Landing. Una entrada ISR por (sitio, país, variante, país detectado acotado); ver docs/DEPLOY.md.
+// [A0/A1] Fábrica de la landing. Cada sitio tiene su propia ruta app/%5Fs/<siteId>/... que importa su tema de forma
+// estática: así cada página solo carga el CSS, JS y fuente de SU tema. Una entrada ISR por (país, variante, detectado).
 import { cache } from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata, Viewport } from 'next';
-import { fill, SITE_IDS, type Locale } from '@la/contracts';
+import { fill, type Locale, type SiteId } from '@la/contracts';
 import { COUNTRY_NAMES, FALLBACK_CATALOG, canonicalOrigin } from '@la/config';
 import { loadLanding } from '@/lib/landing/get-landing-props';
 import { parseLandingRoute, VARIANTS, type LandingRoute } from '@/lib/landing/routing';
-import { getTheme } from '@/themes';
+import type { Theme } from '@/themes';
+import { resolveLocale } from '@/content';
 
-// Estático en el borde + revalidate de seguridad (= CATALOG_REVALIDATE_S). El admin invalida antes con revalidateTag.
-export const revalidate = 60;
-// Países fuera de la lista prerenderizada se generan al primer visitante y quedan cacheados.
-export const dynamicParams = true;
-// Blindaje: aunque un componente llame a cookies()/headers(), la página no se vuelve dinámica.
-export const dynamic = 'force-static';
-
-type RouteParams = { site: string; country: string; variant: string; detected: string };
+type RouteParams = { country: string; variant: string; detected: string };
 type Props = { params: Promise<RouteParams> };
 
 const CORE_MARKETS = ['ES', 'MX', 'PA', 'EC', 'US', 'XX'];
@@ -27,15 +22,13 @@ const CORE_MARKETS = ['ES', 'MX', 'PA', 'EC', 'US', 'XX'];
  * El resto se genera al primer visitante (ISR). Ojo: con `next start` (self-hosting) Next 15.5 no cachea las rutas
  * no prerenderizadas que llegan por rewrite del middleware; en Vercel sí. Ver docs/DEPLOY.md.
  */
-export function generateStaticParams(): RouteParams[] {
+function staticParams(): RouteParams[] {
   const countries = [...new Set([...Object.keys(COUNTRY_NAMES), ...FALLBACK_CATALOG.offers.map((o) => o.country)])];
   const pairs = [
     ...countries.map((c) => [c, c] as const),
     ...CORE_MARKETS.flatMap((c) => CORE_MARKETS.filter((d) => d !== c).map((d) => [c, d] as const)),
   ];
-  return SITE_IDS.flatMap((site) =>
-    pairs.flatMap(([country, detected]) => VARIANTS.map((v) => ({ site, country, variant: String(v), detected }))),
-  );
+  return pairs.flatMap(([country, detected]) => VARIANTS.map((v) => ({ country, variant: String(v), detected })));
 }
 
 // Deduplica entre generateMetadata, generateViewport y la página en el mismo render.
@@ -45,14 +38,15 @@ const load = cache(async (site: string, country: string, variant: string, detect
   return { route: r, ...(await loadLanding(r.site, r.country, r.detected, r.variant)) };
 });
 
+export function makeLandingPage(site: SiteId, theme: Theme) {
 async function fromParams(params: Props['params']) {
   const p = await params;
-  return load(p.site, p.country, p.variant, p.detected);
+  return load(site, p.country, p.variant, p.detected);
 }
 
 const OG_LOCALE: Record<Locale, string> = { 'es-ES': 'es_ES', 'es-419': 'es_LA', 'en-US': 'en_US' };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { props: p, source } = await fromParams(params);
   const top = p.offers[0];
   // En title/OG va el shortName (sin "pick").
@@ -84,24 +78,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export async function generateViewport({ params }: Props): Promise<Viewport> {
-  const { route } = await fromParams(params);
+async function generateViewport({ params }: Props): Promise<Viewport> {
+  await fromParams(params); // valida la ruta (404 si no casa)
   return {
     width: 'device-width',
     initialScale: 1,
     viewportFit: 'cover', // sticky CTA respetando el notch (env(safe-area-inset-bottom))
-    themeColor: (await getTheme(route.site)).tokens.colors.bg,
+    themeColor: theme.tokens.colors.bg,
   };
 }
 
-export default async function Page({ params }: Props) {
+async function Page({ params }: Props) {
   const { props } = await fromParams(params);
-  const { Landing } = await getTheme(props.site.themeId);
+  const { Landing } = theme;
   return (
     <>
       {/* <html lang> lo fija el root layout ("es"); aquí se afina al locale antes del primer pintado. */}
-      <script dangerouslySetInnerHTML={{ __html: `document.documentElement.lang=${JSON.stringify(props.locale)}` }} />
+      <script dangerouslySetInnerHTML={{ __html: `document.documentElement.lang=${JSON.stringify(resolveLocale(props.locale))}` }} />
       <Landing {...props} />
     </>
   );
+}
+
+return { generateStaticParams: staticParams, generateMetadata, generateViewport, Page };
 }

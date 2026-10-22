@@ -2,12 +2,13 @@ import 'server-only';
 // [A4] Lógica común de /go/[offerId] y del botón "probar enlace" del panel (dry-run): misma resolución, misma URL.
 import { PlacementSchema, type Offer, type Placement } from '@la/contracts';
 import { getCatalog } from '@/lib/landing/catalog';
+import { isPublishable } from '@/lib/compliance';
 import { cleanSrc, cleanUtm, isOwnHost } from './request';
 
 export type ResolveResult =
   | { kind: 'ok'; offer: Offer; operatorName: string }
   | { kind: 'not_found' }
-  | { kind: 'unavailable'; offer: Offer; reason: 'inactive' | 'expired' | 'not_started' | 'bad_template' };
+  | { kind: 'unavailable'; offer: Offer; reason: 'inactive' | 'expired' | 'not_started' | 'bad_template' | 'not_publishable' | 'unlicensed' };
 
 export async function resolveOffer(offerId: string): Promise<ResolveResult> {
   const { catalog } = await getCatalog();
@@ -15,6 +16,9 @@ export async function resolveOffer(offerId: string): Promise<ResolveResult> {
   if (!offer) return { kind: 'not_found' };
   const op = catalog.operators.find((o) => o.id === offer.operatorId);
   if (!offer.active || !op) return { kind: 'unavailable', offer, reason: 'inactive' };
+  // Mismas reglas que la landing (§6.1.3): gate P9 del mercado y licencia del operador en ese país.
+  if (!isPublishable(offer.country)) return { kind: 'unavailable', offer, reason: 'not_publishable' };
+  if (!op.licenseByCountry[offer.country]) return { kind: 'unavailable', offer, reason: 'unlicensed' };
   const now = Date.now();
   if (offer.validFrom && Date.parse(offer.validFrom) > now) return { kind: 'unavailable', offer, reason: 'not_started' };
   if (offer.validTo && Date.parse(offer.validTo) <= now) return { kind: 'unavailable', offer, reason: 'expired' };

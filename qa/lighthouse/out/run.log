@@ -1,0 +1,8 @@
+FAIL diamond ES: perf 97 a11y 96 bp 100 LCP 2513ms TBT 59ms CLS 0 JS+CSS 149KB (runs perf 97,97,96)
+FAIL diamond MX: perf 97 a11y 96 bp 100 LCP 2522ms TBT 52ms CLS 0 JS+CSS 149KB (runs perf 97,97,97)
+FAIL donpool ES: perf 97 a11y 96 bp 100 LCP 2483ms TBT 71ms CLS 0 JS+CSS 149KB (runs perf 97,97,97)
+FAIL donpool MX: perf 97 a11y 96 bp 100 LCP 2509ms TBT 55ms CLS 0 JS+CSS 149KB (runs perf 96,97,97)
+FAIL kronos ES: perf 97 a11y 100 bp 100 LCP 2461ms TBT 67ms CLS 0 JS+CSS 149KB (runs perf 97,98,96)
+FAIL kronos MX: perf 98 a11y 100 bp 100 LCP 2399ms TBT 43ms CLS 0 JS+CSS 149KB (runs perf 98,98,98)
+FAIL mapache ES: perf 97 a11y 100 bp 100 LCP 2407ms TBT 66ms CLS 0 JS+CSS 149KB (runs perf 97,97,98)
+FAIL mapache MX: perf 97 a11y 100 bp 100 LCP 2406ms TBT 84ms CLS 0 JS+CSS 149KB (runs perf 97,98,97)

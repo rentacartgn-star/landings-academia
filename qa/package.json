@@ -1,0 +1,12 @@
+{
+  "name": "qa",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "lighthouse": "node lighthouse/run.mjs",
+    "links": "node scripts/check-links.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
+  }
+}

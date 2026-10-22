@@ -21,24 +21,24 @@ function Ticks({ r, count, len, width, className }: { r: number; count: number; 
   );
 }
 
-export function Dial() {
+export function Dial({ center }: { center?: ReactNode }) {
   return (
     <div className={s.dialWrap} data-ring="page" style={ringVar('page')} aria-hidden="true">
       <svg className={s.dial} viewBox="0 0 1000 1000" focusable="false">
         <defs>
           <linearGradient id="kr-silver" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#FFFFFF" />
-            <stop offset=".45" stopColor="#8E9AB5" />
-            <stop offset=".7" stopColor="#E6ECF6" />
-            <stop offset="1" stopColor="#5D6886" />
+            <stop offset="0" style={{ stopColor: 'var(--kr-gold-hi)' }} />
+            <stop offset=".45" style={{ stopColor: 'var(--kr-gold-lo)' }} />
+            <stop offset=".7" style={{ stopColor: 'var(--kr-accent)' }} />
+            <stop offset="1" style={{ stopColor: 'var(--kr-silver-lo)' }} />
           </linearGradient>
           <linearGradient id="kr-arc" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stopColor="#C7D1E3" />
-            <stop offset="1" stopColor="#2BE4FF" />
+            <stop offset="0" style={{ stopColor: 'var(--kr-gold-lo)' }} />
+            <stop offset="1" style={{ stopColor: 'var(--kr-gold-hi)' }} />
           </linearGradient>
           <radialGradient id="kr-face" cx=".5" cy=".42" r=".6">
-            <stop offset="0" stopColor="#13204A" stopOpacity=".55" />
-            <stop offset="1" stopColor="#030817" stopOpacity="0" />
+            <stop offset="0" style={{ stopColor: 'var(--kr-green)', stopOpacity: 0.55 }} />
+            <stop offset="1" style={{ stopColor: 'var(--kr-bg)', stopOpacity: 0 }} />
           </radialGradient>
         </defs>
         <circle cx="500" cy="500" r="496" fill="url(#kr-face)" />
@@ -73,7 +73,20 @@ export function Dial() {
         <circle cx="500" cy="500" r="10" fill="url(#kr-silver)" />
         <circle cx="500" cy="500" r="3.5" className={s.lume} />
       </svg>
+      {center ? <div className={s.dialCenter}>{center}</div> : null}
     </div>
+  );
+}
+
+/** Escudo del canal recortado con su silueta (ver .shield en el CSS). */
+export function Shield({ src, alt, priority, className }: { src: string; alt: string; priority?: boolean; className?: string }) {
+  return (
+    <span className={className ? `${s.shieldWrap} ${className}` : s.shieldWrap}>
+      <span className={s.shield}>
+        <img src={src} alt={alt} width={640} height={640} decoding="async"
+          {...(priority ? { fetchPriority: 'high' as const } : { loading: 'lazy' as const })} />
+      </span>
+    </span>
   );
 }
 

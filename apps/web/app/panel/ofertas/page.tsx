@@ -28,6 +28,8 @@ const REASON: Record<string, string> = {
   expired: 'la oferta ha caducado (validTo)',
   not_started: 'la oferta aún no ha empezado (validFrom)',
   bad_template: 'la plantilla no es https o no lleva {click_id}',
+  not_publishable: 'el mercado no está aprobado por compliance (COMPLIANCE_APPROVED_MARKETS)',
+  unlicensed: 'el operador no tiene licencia registrada en ese país',
 };
 
 async function dryRun(id: string) {

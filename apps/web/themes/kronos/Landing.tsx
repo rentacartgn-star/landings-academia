@@ -7,7 +7,7 @@ import { COUNTRY_NAMES } from '@la/config/countries';
 import { CountrySwitcher, OfferViewTracker, PageTracker, StickyCta, TrackedCta } from '@/components/ui';
 import { inter } from './font';
 import { cssVars, tokens } from './tokens';
-import { Dial, Ring, ringVar } from './Dial';
+import { Dial, Ring, Shield, ringVar } from './Dial';
 import { headScript, TAIL_SCRIPT } from './scripts';
 import s from './kronos.module.css';
 
@@ -192,10 +192,8 @@ export function KronosLanding(p: LandingProps) {
   };
 
   const creator = (
-    <div className={s.creator}>
-      <span className={s.avatarRing}>
-        <img src={p.site.avatarUrl} alt={p.site.memberName} width={56} height={56} fetchPriority="high" />
-      </span>
+    <div className={cx(s.creator, isFallback && s.creatorBig)}>
+      <Shield src={p.site.avatarUrl} alt={p.site.memberName} priority />
       <span className={s.creatorText}>
         <strong>{p.site.brandName}</strong>
         <span>{p.site.handle}</span>
@@ -233,7 +231,7 @@ export function KronosLanding(p: LandingProps) {
         <i className={cx(s.glow, s.glowB)} />
         <i className={cx(s.glow, s.glowC)} />
         <i className={s.grid} />
-        <Dial />
+        <Dial center={isFallback || p.layout === 'ranking' ? <Shield src={p.site.avatarUrl} alt="" /> : undefined} />
         <i className={s.vignette} />
       </div>
 
@@ -369,7 +367,7 @@ export function KronosLanding(p: LandingProps) {
             <section className={s.final} aria-labelledby="kr-final-t">
               <div className={cx(s.glass, s.finalCard)} data-pop="" suppressHydrationWarning style={stagger(0)}>
                 <span className={s.specular} aria-hidden="true" />
-                <Ring id="fin" label={<Crown />} big />
+                <Ring id="fin" label={<Shield src={p.site.avatarUrl} alt="" />} big />
                 <h2 id="kr-final-t" className={s.h2Final}>{c.finalCta.title}</h2>
                 <p className={s.sectionSub}>{c.finalCta.sub}</p>
                 <TrackedCta offerId={top.id} rank={top.rank} placement="final" className={s.cta} data-kr-primary="">

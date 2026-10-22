@@ -1,18 +1,19 @@
-// [A2] Kronos · paleta centralizada. Cambiar aquí cuando lleguen las capturas del canal: todo el tema lee estas variables.
+// [A2] Kronos · paleta centralizada, sacada del escudo del canal (ronda 2): negro carbón, oro, blanco y verde de fondo.
+// Todo el tema lee estas variables: cambiar aquí basta para retocar la paleta.
 import type { CSSProperties } from 'react';
 import type { ThemeTokens } from '@la/contracts';
 
 export const tokens: ThemeTokens = {
   colors: {
-    bg: '#030817', // azul medianoche (esfera del reloj)
-    bgElevated: '#0A1330',
-    surface: 'rgba(14,22,48,.58)', // cristal de zafiro tintado
-    text: '#EEF2F8', // plata clara
-    textMuted: '#8F9CB8',
-    accent: '#C7D1E3', // plata satinada
-    cta: '#2BE4FF', // cian lume: único color de acción
-    ctaText: '#021019',
-    border: 'rgba(205,218,245,.14)',
+    bg: '#08080A', // negro carbón del escudo
+    bgElevated: '#141416',
+    surface: 'rgba(24,22,18,.56)', // cristal ahumado
+    text: '#F6F3EC', // blanco de la banda "KRONOS"
+    textMuted: '#A49D8F',
+    accent: '#CFAE62', // oro satinado del borde del escudo
+    cta: '#EBC660', // oro brillante: único color de acción
+    ctaText: '#0B0905',
+    border: 'rgba(240,222,176,.14)',
   },
   radius: { card: '30px', pill: '999px' },
   fonts: { display: 'Inter', body: 'Inter' },
@@ -20,17 +21,21 @@ export const tokens: ThemeTokens = {
 
 /** Tokens extra del tema (no entran en el contrato). */
 export const extra = {
-  bgDeep: '#01040D',
-  surfaceSolid: '#0B1431', // sustituto opaco del cristal en gama baja
+  bgDeep: '#040405',
+  surfaceSolid: '#17150F', // sustituto opaco del cristal en gama baja
   silverHi: '#FFFFFF',
-  silverLo: '#7E8AA6',
-  lumeSoft: 'rgba(43,228,255,.16)',
-  sapphire: 'rgba(132,120,255,.22)', // reflejo violeta del antirreflejo del zafiro
-  grid: 'rgba(150,178,232,.055)',
-  gridMajor: 'rgba(150,178,232,.10)',
-  glowA: 'rgba(36,92,255,.42)',
-  glowB: 'rgba(43,228,255,.16)',
-  glowC: 'rgba(200,212,236,.10)',
+  silverLo: '#8E8676', // gris cálido para degradados de texto
+  goldHi: '#FBEA9A', // brillo especular del oro (K del escudo)
+  goldLo: '#B98434', // oro en sombra
+  green: '#1B3A26', // verde del interior del escudo (acento sutil)
+  line: '240 226 192', // trazos finos (marcas, bordes): rgb sin alfa
+  lumeSoft: 'rgba(235,198,96,.18)',
+  reflex: 'rgba(235,198,96,.24)', // reflejo dorado del borde del cristal
+  grid: 'rgba(240,226,192,.04)',
+  gridMajor: 'rgba(240,226,192,.075)',
+  glowA: 'rgba(200,150,64,.22)', // la luz dorada que cruza el fondo del logo
+  glowB: 'rgba(27,74,46,.42)', // verde campo
+  glowC: 'rgba(246,240,226,.06)',
 };
 
 /** Variables CSS que consume kronos.module.css. */
@@ -52,8 +57,12 @@ export function cssVars(): CSSProperties {
     '--kr-surface-solid': extra.surfaceSolid,
     '--kr-silver-hi': extra.silverHi,
     '--kr-silver-lo': extra.silverLo,
+    '--kr-gold-hi': extra.goldHi,
+    '--kr-gold-lo': extra.goldLo,
+    '--kr-green': extra.green,
+    '--kr-line': extra.line,
     '--kr-lume-soft': extra.lumeSoft,
-    '--kr-sapphire': extra.sapphire,
+    '--kr-reflex': extra.reflex,
     '--kr-grid': extra.grid,
     '--kr-grid-major': extra.gridMajor,
     '--kr-glow-a': extra.glowA,
