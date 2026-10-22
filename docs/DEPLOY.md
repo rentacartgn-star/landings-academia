@@ -129,3 +129,9 @@ curl -s -o /dev/null -w '%{http_code}\n' localhost:3151/_s/diamond/MX/0/MX   # 4
 Para ver la caché real: `NEXT_DIST_DIR=.next-a1-prod npx next build && NEXT_DIST_DIR=.next-a1-prod npx next start -p 3151`
 y mira `x-nextjs-cache: HIT`. Ojo: en build `NODE_ENV=production`, así que el gate P9 de A5 aplica (sin
 `COMPLIANCE_APPROVED_MARKETS` todos los mercados salen en fallback).
+
+## Cambiar mercados aprobados (gate P9)
+`COMPLIANCE_APPROVED_MARKETS` se lee al renderizar, pero las páginas son estáticas (ISR 60 s): tras cambiar la variable en Vercel **haz Redeploy** para que el cambio sea inmediato; si no, cada (sitio, país) tarda hasta 60 s + una visita en actualizarse. `/go` sí aplica el gate en cada clic.
+
+## Rutas por sitio
+Cada sitio tiene su ruta `app/%5Fs/<siteId>/[country]/[variant]/[detected]/page.tsx` (importa su tema estático, para no cargar el CSS de los demás). Un sitio nuevo = entrada en `packages/config/src/sites.ts` + `themes/<id>/` + `content/<id>/` + copiar una de esas rutas.
