@@ -21,6 +21,8 @@ function safeEqual(a: string, b: string): boolean {
 /** Overrides `?__site= / ?__country= / ?__v=` permitidos: en desarrollo, o con `?__token=` = PREVIEW_OVERRIDE_TOKEN. */
 export function overridesAllowed(req: NextRequest): boolean {
   if (isDev) return true;
+  // Los previews de Vercel están detrás de Vercel Authentication: ahí no hace falta token.
+  if (process.env.VERCEL_ENV === 'preview') return true;
   const expected = process.env.PREVIEW_OVERRIDE_TOKEN;
   const given = req.nextUrl.searchParams.get('__token');
   return !!expected && !!given && safeEqual(given, expected);
