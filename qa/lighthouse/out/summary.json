@@ -7,44 +7,143 @@
     "jsCssKb": 180
   },
   "base": "http://localhost:3156",
-  "at": "2026-10-22T16:59:51.174Z",
+  "at": "2026-10-22T17:34:14.266Z",
   "results": {
     "diamond-ES": {
-      "perf": 97,
-      "a11y": 96,
+      "perf": 98,
+      "a11y": 100,
       "bp": 100,
-      "lcpMs": 2513,
-      "fcpMs": 1214,
-      "tbtMs": 59,
+      "lcpMs": 2375,
+      "fcpMs": 1059,
+      "tbtMs": 39,
       "cls": 0,
-      "siMs": 1214,
-      "lcpElement": "main.diamond_main__0m8WZ > section.diamond_hero__UewrC > div.diamond_heroOffer__xMLJN > p.diamond_terms__V2C9o «Condiciones del bono pendientes de aprobar por el operador ·»",
+      "siMs": 1059,
+      "lcpElement": "main.diamond_main__0m8WZ > section.diamond_hero__UewrC > div.diamond_heroText__f1GP2 > p.diamond_sub__3onxK «Licencia de la DGOJ, condiciones del bono escritas debajo y »",
       "lcpPhases": [
-        "timeToFirstByte: 14ms",
-        "elementRenderDelay: 198ms"
+        "timeToFirstByte: 12ms",
+        "elementRenderDelay: 165ms"
       ],
       "renderBlocking": [
-        "/_next/static/css/2ebc8de0aebf96ae.css 157ms",
-        "/_next/static/css/c0c0550ae8fbba94.css 457ms",
-        "/_next/static/css/bcabf2e6bde7e80e.css 307ms"
+        "/_next/static/css/822b8ed4a3986fd0.css 304ms",
+        "/_next/static/css/6a8c3506cdf644da.css 154ms"
       ],
-      "contrast": [
-        "<span class=\"diamond_handle__pPW06\"> — contrast of 4.24 (foreground color: #6b737d, background color: #050507",
-        "<p class=\"diamond_tagline__kUdei\"> — contrast of 4.24 (foreground color: #6b737d, background color: #050507",
-        "<p class=\"diamond_disclaimer__ejDM_\"> — contrast of 4.24 (foreground color: #6b737d, background color: #050507"
-      ],
+      "contrast": [],
       "a11yNodes": {},
       "bpDetail": {},
-      "jsKb": 125.8,
-      "cssKb": 23.2,
-      "jsCssKb": 149,
+      "jsKb": 122.4,
+      "cssKb": 10.4,
+      "jsCssKb": 132.8,
       "biggest": [
         "/_next/static/chunks/3f81c6bc-7fca4c3253141276.js 53.5KB",
         "/_next/static/chunks/268-5404169f0f4d960c.js 45.7KB",
-        "/_next/static/css/c0c0550ae8fbba94.css 13.6KB",
-        "/_next/static/chunks/681-1ac126fbefecf5ba.js 13.1KB",
-        "/_next/static/chunks/app/%255Fs/%5Bsite%5D/%5Bcountry%5D/%5Bvariant%5D/%5Bdetected%5D/page-09d229327f58e5ff.js 10.6KB",
-        "/_next/static/css/bcabf2e6bde7e80e.css 7.2KB"
+        "/_next/static/chunks/861-b1f4d466d9f4dfd8.js 13KB",
+        "/_next/static/css/822b8ed4a3986fd0.css 8KB",
+        "/_next/static/chunks/497-88852fd980221dd1.js 4.1KB",
+        "/_next/static/chunks/app/%255Fs/diamond/%5Bcountry%5D/%5Bvariant%5D/%5Bdetected%5D/page-a635714185aede19.js 3.2KB"
+      ],
+      "unusedJs": [
+        "/_next/static/chunks/268-5404169f0f4d960c.js −21.3KB"
+      ],
+      "failing": {
+        "performance": [],
+        "accessibility": [],
+        "best-practices": []
+      },
+      "runsPerf": [
+        97,
+        98,
+        98
+      ],
+      "runsLcp": [
+        2459,
+        2375,
+        2377
+      ],
+      "pass": false
+    },
+    "diamond-MX": {
+      "perf": 98,
+      "a11y": 100,
+      "bp": 100,
+      "lcpMs": 2379,
+      "fcpMs": 1066,
+      "tbtMs": 54,
+      "cls": 0,
+      "siMs": 1066,
+      "lcpElement": "main.diamond_main__0m8WZ > section.diamond_hero__UewrC > div.diamond_heroText__f1GP2 > p.diamond_sub__3onxK «Licencia en tu país, condiciones del bono escritas debajo y »",
+      "lcpPhases": [
+        "timeToFirstByte: 34ms",
+        "elementRenderDelay: 189ms"
+      ],
+      "renderBlocking": [
+        "/_next/static/css/6a8c3506cdf644da.css 158ms",
+        "/_next/static/css/822b8ed4a3986fd0.css 308ms"
+      ],
+      "contrast": [],
+      "a11yNodes": {},
+      "bpDetail": {},
+      "jsKb": 122.4,
+      "cssKb": 10.4,
+      "jsCssKb": 132.8,
+      "biggest": [
+        "/_next/static/chunks/3f81c6bc-7fca4c3253141276.js 53.5KB",
+        "/_next/static/chunks/268-5404169f0f4d960c.js 45.7KB",
+        "/_next/static/chunks/861-b1f4d466d9f4dfd8.js 13KB",
+        "/_next/static/css/822b8ed4a3986fd0.css 8KB",
+        "/_next/static/chunks/497-88852fd980221dd1.js 4.1KB",
+        "/_next/static/chunks/app/%255Fs/diamond/%5Bcountry%5D/%5Bvariant%5D/%5Bdetected%5D/page-a635714185aede19.js 3.2KB"
+      ],
+      "unusedJs": [
+        "/_next/static/chunks/268-5404169f0f4d960c.js −21.4KB"
+      ],
+      "failing": {
+        "performance": [],
+        "accessibility": [],
+        "best-practices": []
+      },
+      "runsPerf": [
+        98,
+        97,
+        98
+      ],
+      "runsLcp": [
+        2379,
+        2426,
+        2365
+      ],
+      "pass": false
+    },
+    "donpool-ES": {
+      "perf": 97,
+      "a11y": 100,
+      "bp": 100,
+      "lcpMs": 2569,
+      "fcpMs": 1066,
+      "tbtMs": 48,
+      "cls": 0,
+      "siMs": 1066,
+      "lcpElement": "main > section.dp-hero > div.dp-hero__foot > p.dp-lede «Licencia de la DGOJ, condiciones del bono escritas debajo y »",
+      "lcpPhases": [
+        "timeToFirstByte: 33ms",
+        "elementRenderDelay: 140ms"
+      ],
+      "renderBlocking": [
+        "/_next/static/css/6a8c3506cdf644da.css 158ms",
+        "/_next/static/css/5712e310daf9900c.css 308ms"
+      ],
+      "contrast": [],
+      "a11yNodes": {},
+      "bpDetail": {},
+      "jsKb": 120.2,
+      "cssKb": 3.3,
+      "jsCssKb": 123.5,
+      "biggest": [
+        "/_next/static/chunks/3f81c6bc-7fca4c3253141276.js 53.5KB",
+        "/_next/static/chunks/268-5404169f0f4d960c.js 45.7KB",
+        "/_next/static/chunks/861-b1f4d466d9f4dfd8.js 13KB",
+        "/_next/static/chunks/497-88852fd980221dd1.js 4.1KB",
+        "/_next/static/css/6a8c3506cdf644da.css 2.4KB",
+        "/_next/static/chunks/webpack-26ba3240a0a8cc51.js 2.1KB"
       ],
       "unusedJs": [
         "/_next/static/chunks/268-5404169f0f4d960c.js −21.4KB"
@@ -53,67 +152,236 @@
         "performance": [
           {
             "id": "largest-contentful-paint",
-            "score": 0.89,
-            "value": "2.5 s"
+            "score": 0.88,
+            "value": "2.6 s"
           }
         ],
-        "accessibility": [
-          {
-            "id": "color-contrast",
-            "score": 0,
-            "value": ""
-          }
-        ],
+        "accessibility": [],
         "best-practices": []
       },
       "runsPerf": [
         97,
         97,
-        96
+        97
       ],
       "runsLcp": [
-        2513,
-        2514,
-        2583
+        2569,
+        2573,
+        2565
       ],
       "pass": false
     },
-    "diamond-MX": {
+    "donpool-MX": {
       "perf": 97,
-      "a11y": 96,
+      "a11y": 100,
       "bp": 100,
-      "lcpMs": 2522,
-      "fcpMs": 1229,
-      "tbtMs": 52,
+      "lcpMs": 2564,
+      "fcpMs": 1066,
+      "tbtMs": 46,
       "cls": 0,
-      "siMs": 1229,
-      "lcpElement": "main.diamond_main__0m8WZ > section.diamond_hero__UewrC > div.diamond_heroOffer__xMLJN > p.diamond_terms__V2C9o «Condiciones del bono pendientes de aprobar por el operador ·»",
+      "siMs": 1066,
+      "lcpElement": "div.dp-crest > span.dp-in > span.dp-logo > img «DonPool Picks»",
       "lcpPhases": [
-        "timeToFirstByte: 28ms",
-        "elementRenderDelay: 204ms"
+        "timeToFirstByte: 29ms",
+        "resourceLoadDelay: 17ms",
+        "resourceLoadDuration: 26ms",
+        "elementRenderDelay: 91ms"
       ],
       "renderBlocking": [
-        "/_next/static/css/2ebc8de0aebf96ae.css 165ms",
-        "/_next/static/css/bcabf2e6bde7e80e.css 315ms",
-        "/_next/static/css/c0c0550ae8fbba94.css 465ms"
+        "/_next/static/css/6a8c3506cdf644da.css 158ms",
+        "/_next/static/css/5712e310daf9900c.css 308ms"
       ],
-      "contrast": [
-        "<span class=\"diamond_handle__pPW06\"> — contrast of 4.24 (foreground color: #6b737d, background color: #050507",
-        "<p class=\"diamond_tagline__kUdei\"> — contrast of 4.24 (foreground color: #6b737d, background color: #050507",
-        "<p class=\"diamond_disclaimer__ejDM_\"> — contrast of 4.24 (foreground color: #6b737d, background color: #050507"
-      ],
+      "contrast": [],
       "a11yNodes": {},
       "bpDetail": {},
-      "jsKb": 125.8,
-      "cssKb": 23.2,
-      "jsCssKb": 149,
+      "jsKb": 120.2,
+      "cssKb": 3.3,
+      "jsCssKb": 123.5,
       "biggest": [
         "/_next/static/chunks/3f81c6bc-7fca4c3253141276.js 53.5KB",
         "/_next/static/chunks/268-5404169f0f4d960c.js 45.7KB",
-        "/_next/static/css/c0c0550ae8fbba94.css 13.6KB",
-        "/_next/static/chunks/681-1ac126fbefecf5ba.js 13.1KB",
-        "/_next/static/chunks/app/%255Fs/%5Bsite%5D/%5Bcountry%5D/%5Bvariant%5D/%5Bdetected%5D/page-09d229327f58e5ff.js 10.6KB",
-        "/_next/static/css/bcabf2e6bde7e80e.css 7.2KB"
+        "/_next/static/chunks/861-b1f4d466d9f4dfd8.js 13KB",
+        "/_next/static/chunks/497-88852fd980221dd1.js 4.1KB",
+        "/_next/static/css/6a8c3506cdf644da.css 2.4KB",
+        "/_next/static/chunks/webpack-26ba3240a0a8cc51.js 2.1KB"
+      ],
+      "unusedJs": [
+        "/_next/static/chunks/268-5404169f0f4d960c.js −21.4KB"
+      ],
+      "failing": {
+        "performance": [
+          {
+            "id": "largest-contentful-paint",
+            "score": 0.88,
+            "value": "2.6 s"
+          }
+        ],
+        "accessibility": [],
+        "best-practices": []
+      },
+      "runsPerf": [
+        97,
+        97,
+        97
+      ],
+      "runsLcp": [
+        2564,
+        2561,
+        2549
+      ],
+      "pass": false
+    },
+    "kronos-ES": {
+      "perf": 96,
+      "a11y": 100,
+      "bp": 100,
+      "lcpMs": 2619,
+      "fcpMs": 1063,
+      "tbtMs": 74,
+      "cls": 0,
+      "siMs": 1063,
+      "lcpElement": "div.kronos_creator__qT91a > span.kronos_shieldWrap__0_f1j > span.kronos_shield__FHoRK > img «Kronos»",
+      "lcpPhases": [
+        "timeToFirstByte: 15ms",
+        "resourceLoadDelay: 19ms",
+        "resourceLoadDuration: 20ms",
+        "elementRenderDelay: 148ms"
+      ],
+      "renderBlocking": [
+        "/_next/static/css/f34e1ee86ca0df34.css 306ms",
+        "/_next/static/css/6a8c3506cdf644da.css 156ms"
+      ],
+      "contrast": [],
+      "a11yNodes": {},
+      "bpDetail": {},
+      "jsKb": 121.9,
+      "cssKb": 10.8,
+      "jsCssKb": 132.7,
+      "biggest": [
+        "/_next/static/chunks/3f81c6bc-7fca4c3253141276.js 53.5KB",
+        "/_next/static/chunks/268-5404169f0f4d960c.js 45.7KB",
+        "/_next/static/chunks/861-b1f4d466d9f4dfd8.js 13KB",
+        "/_next/static/css/f34e1ee86ca0df34.css 8.4KB",
+        "/_next/static/chunks/497-88852fd980221dd1.js 4.1KB",
+        "/_next/static/chunks/app/%255Fs/kronos/%5Bcountry%5D/%5Bvariant%5D/%5Bdetected%5D/page-7d8aa03fe1f686f3.js 2.6KB"
+      ],
+      "unusedJs": [
+        "/_next/static/chunks/268-5404169f0f4d960c.js −21.4KB"
+      ],
+      "failing": {
+        "performance": [
+          {
+            "id": "largest-contentful-paint",
+            "score": 0.87,
+            "value": "2.6 s"
+          }
+        ],
+        "accessibility": [],
+        "best-practices": []
+      },
+      "runsPerf": [
+        94,
+        96,
+        97
+      ],
+      "runsLcp": [
+        2776,
+        2619,
+        2577
+      ],
+      "pass": false
+    },
+    "kronos-MX": {
+      "perf": 97,
+      "a11y": 100,
+      "bp": 100,
+      "lcpMs": 2595,
+      "fcpMs": 1070,
+      "tbtMs": 41,
+      "cls": 0,
+      "siMs": 1070,
+      "lcpElement": "div.kronos_creator__qT91a > span.kronos_shieldWrap__0_f1j > span.kronos_shield__FHoRK > img «Kronos»",
+      "lcpPhases": [
+        "timeToFirstByte: 15ms",
+        "resourceLoadDelay: 22ms",
+        "resourceLoadDuration: 35ms",
+        "elementRenderDelay: 165ms"
+      ],
+      "renderBlocking": [
+        "/_next/static/css/6a8c3506cdf644da.css 160ms",
+        "/_next/static/css/f34e1ee86ca0df34.css 310ms"
+      ],
+      "contrast": [],
+      "a11yNodes": {},
+      "bpDetail": {},
+      "jsKb": 121.9,
+      "cssKb": 10.8,
+      "jsCssKb": 132.7,
+      "biggest": [
+        "/_next/static/chunks/3f81c6bc-7fca4c3253141276.js 53.5KB",
+        "/_next/static/chunks/268-5404169f0f4d960c.js 45.7KB",
+        "/_next/static/chunks/861-b1f4d466d9f4dfd8.js 13KB",
+        "/_next/static/css/f34e1ee86ca0df34.css 8.4KB",
+        "/_next/static/chunks/497-88852fd980221dd1.js 4.1KB",
+        "/_next/static/chunks/app/%255Fs/kronos/%5Bcountry%5D/%5Bvariant%5D/%5Bdetected%5D/page-7d8aa03fe1f686f3.js 2.6KB"
+      ],
+      "unusedJs": [
+        "/_next/static/chunks/268-5404169f0f4d960c.js −21.4KB"
+      ],
+      "failing": {
+        "performance": [
+          {
+            "id": "largest-contentful-paint",
+            "score": 0.88,
+            "value": "2.6 s"
+          }
+        ],
+        "accessibility": [],
+        "best-practices": []
+      },
+      "runsPerf": [
+        97,
+        96,
+        97
+      ],
+      "runsLcp": [
+        2595,
+        2620,
+        2572
+      ],
+      "pass": false
+    },
+    "mapache-ES": {
+      "perf": 97,
+      "a11y": 100,
+      "bp": 100,
+      "lcpMs": 2529,
+      "fcpMs": 1067,
+      "tbtMs": 55,
+      "cls": 0,
+      "siMs": 1067,
+      "lcpElement": "section.mapache_hero__cDcs4 > div.mapache_heroGrid__jUzKw > div.mapache_heroCopy__gW5CG > h1.mapache_h1__dxGl8 «Me he leído hasta la letra pequeña.\nEsta es la casa que uso »",
+      "lcpPhases": [
+        "timeToFirstByte: 29ms",
+        "elementRenderDelay: 148ms"
+      ],
+      "renderBlocking": [
+        "/_next/static/css/ca54e245d9d5708d.css 309ms",
+        "/_next/static/css/6a8c3506cdf644da.css 159ms"
+      ],
+      "contrast": [],
+      "a11yNodes": {},
+      "bpDetail": {},
+      "jsKb": 122.5,
+      "cssKb": 9.9,
+      "jsCssKb": 132.4,
+      "biggest": [
+        "/_next/static/chunks/3f81c6bc-7fca4c3253141276.js 53.5KB",
+        "/_next/static/chunks/268-5404169f0f4d960c.js 45.7KB",
+        "/_next/static/chunks/861-b1f4d466d9f4dfd8.js 13KB",
+        "/_next/static/css/ca54e245d9d5708d.css 7.5KB",
+        "/_next/static/chunks/497-88852fd980221dd1.js 4.1KB",
+        "/_next/static/chunks/app/%255Fs/mapache/%5Bcountry%5D/%5Bvariant%5D/%5Bdetected%5D/page-01ad9f5bfded651f.js 3.3KB"
       ],
       "unusedJs": [
         "/_next/static/chunks/268-5404169f0f4d960c.js −21.3KB"
@@ -126,13 +394,7 @@
             "value": "2.5 s"
           }
         ],
-        "accessibility": [
-          {
-            "id": "color-contrast",
-            "score": 0,
-            "value": ""
-          }
-        ],
+        "accessibility": [],
         "best-practices": []
       },
       "runsPerf": [
@@ -141,109 +403,43 @@
         97
       ],
       "runsLcp": [
-        2522,
-        2560,
-        2552
+        2529,
+        2542,
+        2556
       ],
       "pass": false
     },
-    "donpool-ES": {
+    "mapache-MX": {
       "perf": 97,
-      "a11y": 96,
+      "a11y": 100,
       "bp": 100,
-      "lcpMs": 2483,
-      "fcpMs": 1224,
-      "tbtMs": 71,
+      "lcpMs": 2545,
+      "fcpMs": 1063,
+      "tbtMs": 67,
       "cls": 0,
-      "siMs": 1224,
-      "lcpElement": "main > section.dp-hero > div.dp-hero__copy > h1.dp-h1 «Pasa, sin prisa. Esta es la casa que uso yo.»",
-      "lcpPhases": [
-        "timeToFirstByte: 28ms",
-        "elementRenderDelay: 165ms"
-      ],
-      "renderBlocking": [
-        "/_next/static/css/bcabf2e6bde7e80e.css 312ms",
-        "/_next/static/css/c0c0550ae8fbba94.css 462ms",
-        "/_next/static/css/2ebc8de0aebf96ae.css 162ms"
-      ],
-      "contrast": [
-        "<p class=\"dp-foot__disc\"> — contrast of 3.62 (foreground color: #696f65, background color: #05150f",
-        "<span class=\"dp-foot__age\"> — contrast of 3.62 (foreground color: #696f65, background color: #05150f"
-      ],
-      "a11yNodes": {},
-      "bpDetail": {},
-      "jsKb": 125.8,
-      "cssKb": 23.2,
-      "jsCssKb": 149,
-      "biggest": [
-        "/_next/static/chunks/3f81c6bc-7fca4c3253141276.js 53.5KB",
-        "/_next/static/chunks/268-5404169f0f4d960c.js 45.7KB",
-        "/_next/static/css/c0c0550ae8fbba94.css 13.6KB",
-        "/_next/static/chunks/681-1ac126fbefecf5ba.js 13.1KB",
-        "/_next/static/chunks/app/%255Fs/%5Bsite%5D/%5Bcountry%5D/%5Bvariant%5D/%5Bdetected%5D/page-09d229327f58e5ff.js 10.6KB",
-        "/_next/static/css/bcabf2e6bde7e80e.css 7.2KB"
-      ],
-      "unusedJs": [
-        "/_next/static/chunks/268-5404169f0f4d960c.js −21.4KB"
-      ],
-      "failing": {
-        "performance": [],
-        "accessibility": [
-          {
-            "id": "color-contrast",
-            "score": 0,
-            "value": ""
-          }
-        ],
-        "best-practices": []
-      },
-      "runsPerf": [
-        97,
-        97,
-        97
-      ],
-      "runsLcp": [
-        2483,
-        2563,
-        2504
-      ],
-      "pass": false
-    },
-    "donpool-MX": {
-      "perf": 97,
-      "a11y": 96,
-      "bp": 100,
-      "lcpMs": 2509,
-      "fcpMs": 1219,
-      "tbtMs": 55,
-      "cls": 0,
-      "siMs": 1219,
-      "lcpElement": "main > section.dp-hero > div.dp-hero__copy > h1.dp-h1 «Pasa, sin prisa. Esta es la casa que uso yo.»",
+      "siMs": 1063,
+      "lcpElement": "section.mapache_hero__cDcs4 > div.mapache_heroGrid__jUzKw > div.mapache_heroCopy__gW5CG > h1.mapache_h1__dxGl8 «Me leí hasta la letra pequeña.\nEsta es la casa que uso yo.»",
       "lcpPhases": [
         "timeToFirstByte: 14ms",
-        "elementRenderDelay: 171ms"
+        "elementRenderDelay: 170ms"
       ],
       "renderBlocking": [
-        "/_next/static/css/2ebc8de0aebf96ae.css 160ms",
-        "/_next/static/css/c0c0550ae8fbba94.css 460ms",
-        "/_next/static/css/bcabf2e6bde7e80e.css 310ms"
+        "/_next/static/css/6a8c3506cdf644da.css 157ms",
+        "/_next/static/css/ca54e245d9d5708d.css 307ms"
       ],
-      "contrast": [
-        "<p class=\"dp-foot__disc\"> — contrast of 3.62 (foreground color: #696f65, background color: #05150f",
-        "<span class=\"dp-foot__age\"> — contrast of 3.62 (foreground color: #696f65, background color: #05150f"
-      ],
+      "contrast": [],
       "a11yNodes": {},
       "bpDetail": {},
-      "jsKb": 125.8,
-      "cssKb": 23.2,
-      "jsCssKb": 149,
+      "jsKb": 122.5,
+      "cssKb": 9.9,
+      "jsCssKb": 132.4,
       "biggest": [
         "/_next/static/chunks/3f81c6bc-7fca4c3253141276.js 53.5KB",
         "/_next/static/chunks/268-5404169f0f4d960c.js 45.7KB",
-        "/_next/static/css/c0c0550ae8fbba94.css 13.6KB",
-        "/_next/static/chunks/681-1ac126fbefecf5ba.js 13.1KB",
-        "/_next/static/chunks/app/%255Fs/%5Bsite%5D/%5Bcountry%5D/%5Bvariant%5D/%5Bdetected%5D/page-09d229327f58e5ff.js 10.6KB",
-        "/_next/static/css/bcabf2e6bde7e80e.css 7.2KB"
+        "/_next/static/chunks/861-b1f4d466d9f4dfd8.js 13KB",
+        "/_next/static/css/ca54e245d9d5708d.css 7.5KB",
+        "/_next/static/chunks/497-88852fd980221dd1.js 4.1KB",
+        "/_next/static/chunks/app/%255Fs/mapache/%5Bcountry%5D/%5Bvariant%5D/%5Bdetected%5D/page-01ad9f5bfded651f.js 3.3KB"
       ],
       "unusedJs": [
         "/_next/static/chunks/268-5404169f0f4d960c.js −21.4KB"
@@ -256,13 +452,7 @@
             "value": "2.5 s"
           }
         ],
-        "accessibility": [
-          {
-            "id": "color-contrast",
-            "score": 0,
-            "value": ""
-          }
-        ],
+        "accessibility": [],
         "best-practices": []
       },
       "runsPerf": [
@@ -271,225 +461,9 @@
         97
       ],
       "runsLcp": [
-        2481,
-        2509,
-        2457
-      ],
-      "pass": false
-    },
-    "kronos-ES": {
-      "perf": 97,
-      "a11y": 100,
-      "bp": 100,
-      "lcpMs": 2461,
-      "fcpMs": 1218,
-      "tbtMs": 67,
-      "cls": 0,
-      "siMs": 1218,
-      "lcpElement": "body > div.__variable_365cbc > main.kronos_main__UWM5W > section.kronos_hero__8Jg0G «Kronos\n@TODO(sergi)\n\nMI MÉTODO PARA ELEGIR CASA · ESPAÑA\n\nMe»",
-      "lcpPhases": [
-        "timeToFirstByte: 13ms",
-        "elementRenderDelay: 179ms"
-      ],
-      "renderBlocking": [
-        "/_next/static/css/bcabf2e6bde7e80e.css 309ms",
-        "/_next/static/css/c0c0550ae8fbba94.css 459ms",
-        "/_next/static/css/2ebc8de0aebf96ae.css 159ms"
-      ],
-      "contrast": [],
-      "a11yNodes": {},
-      "bpDetail": {},
-      "jsKb": 125.8,
-      "cssKb": 23.2,
-      "jsCssKb": 149,
-      "biggest": [
-        "/_next/static/chunks/3f81c6bc-7fca4c3253141276.js 53.5KB",
-        "/_next/static/chunks/268-5404169f0f4d960c.js 45.7KB",
-        "/_next/static/css/c0c0550ae8fbba94.css 13.6KB",
-        "/_next/static/chunks/681-1ac126fbefecf5ba.js 13.1KB",
-        "/_next/static/chunks/app/%255Fs/%5Bsite%5D/%5Bcountry%5D/%5Bvariant%5D/%5Bdetected%5D/page-09d229327f58e5ff.js 10.6KB",
-        "/_next/static/css/bcabf2e6bde7e80e.css 7.2KB"
-      ],
-      "unusedJs": [
-        "/_next/static/chunks/268-5404169f0f4d960c.js −21.4KB"
-      ],
-      "failing": {
-        "performance": [],
-        "accessibility": [],
-        "best-practices": []
-      },
-      "runsPerf": [
-        97,
-        98,
-        96
-      ],
-      "runsLcp": [
-        2461,
-        2404,
-        2411
-      ],
-      "pass": false
-    },
-    "kronos-MX": {
-      "perf": 98,
-      "a11y": 100,
-      "bp": 100,
-      "lcpMs": 2399,
-      "fcpMs": 1209,
-      "tbtMs": 43,
-      "cls": 0,
-      "siMs": 1209,
-      "lcpElement": "main.kronos_main__UWM5W > section.kronos_hero__8Jg0G > div.kronos_heroText__vINpS > p.kronos_sub__B6XN5 «Licencia en tu país, condiciones del bono escritas abajo y p»",
-      "lcpPhases": [
-        "timeToFirstByte: 27ms",
-        "elementRenderDelay: 185ms"
-      ],
-      "renderBlocking": [
-        "/_next/static/css/bcabf2e6bde7e80e.css 304ms",
-        "/_next/static/css/c0c0550ae8fbba94.css 454ms",
-        "/_next/static/css/2ebc8de0aebf96ae.css 154ms"
-      ],
-      "contrast": [],
-      "a11yNodes": {},
-      "bpDetail": {},
-      "jsKb": 125.8,
-      "cssKb": 23.2,
-      "jsCssKb": 149,
-      "biggest": [
-        "/_next/static/chunks/3f81c6bc-7fca4c3253141276.js 53.5KB",
-        "/_next/static/chunks/268-5404169f0f4d960c.js 45.7KB",
-        "/_next/static/css/c0c0550ae8fbba94.css 13.6KB",
-        "/_next/static/chunks/681-1ac126fbefecf5ba.js 13.1KB",
-        "/_next/static/chunks/app/%255Fs/%5Bsite%5D/%5Bcountry%5D/%5Bvariant%5D/%5Bdetected%5D/page-09d229327f58e5ff.js 10.6KB",
-        "/_next/static/css/bcabf2e6bde7e80e.css 7.2KB"
-      ],
-      "unusedJs": [
-        "/_next/static/chunks/268-5404169f0f4d960c.js −21.4KB"
-      ],
-      "failing": {
-        "performance": [],
-        "accessibility": [],
-        "best-practices": []
-      },
-      "runsPerf": [
-        98,
-        98,
-        98
-      ],
-      "runsLcp": [
-        2399,
-        2423,
-        2400
-      ],
-      "pass": false
-    },
-    "mapache-ES": {
-      "perf": 97,
-      "a11y": 100,
-      "bp": 100,
-      "lcpMs": 2407,
-      "fcpMs": 1062,
-      "tbtMs": 66,
-      "cls": 0,
-      "siMs": 1062,
-      "lcpElement": "main.mapache_main__pn9Nl > section.mapache_hero__cDcs4 > div.mapache_scene__FoGYI > div.mapache_plan__NALxc «main.mapache_main__pn9Nl > section.mapache_hero__cDcs4 > div»",
-      "lcpPhases": [
-        "timeToFirstByte: 23ms",
-        "resourceLoadDelay: 66ms",
-        "resourceLoadDuration: 4ms",
-        "elementRenderDelay: 82ms"
-      ],
-      "renderBlocking": [
-        "/_next/static/css/bcabf2e6bde7e80e.css 306ms",
-        "/_next/static/css/c0c0550ae8fbba94.css 456ms",
-        "/_next/static/css/2ebc8de0aebf96ae.css 156ms"
-      ],
-      "contrast": [],
-      "a11yNodes": {},
-      "bpDetail": {},
-      "jsKb": 125.8,
-      "cssKb": 23.2,
-      "jsCssKb": 149,
-      "biggest": [
-        "/_next/static/chunks/3f81c6bc-7fca4c3253141276.js 53.5KB",
-        "/_next/static/chunks/268-5404169f0f4d960c.js 45.7KB",
-        "/_next/static/css/c0c0550ae8fbba94.css 13.6KB",
-        "/_next/static/chunks/681-1ac126fbefecf5ba.js 13.1KB",
-        "/_next/static/chunks/app/%255Fs/%5Bsite%5D/%5Bcountry%5D/%5Bvariant%5D/%5Bdetected%5D/page-09d229327f58e5ff.js 10.6KB",
-        "/_next/static/css/bcabf2e6bde7e80e.css 7.2KB"
-      ],
-      "unusedJs": [
-        "/_next/static/chunks/268-5404169f0f4d960c.js −21.3KB"
-      ],
-      "failing": {
-        "performance": [],
-        "accessibility": [],
-        "best-practices": []
-      },
-      "runsPerf": [
-        97,
-        97,
-        98
-      ],
-      "runsLcp": [
-        2407,
-        2395,
-        2377
-      ],
-      "pass": false
-    },
-    "mapache-MX": {
-      "perf": 97,
-      "a11y": 100,
-      "bp": 100,
-      "lcpMs": 2406,
-      "fcpMs": 1065,
-      "tbtMs": 84,
-      "cls": 0,
-      "siMs": 1092,
-      "lcpElement": "main.mapache_main__pn9Nl > section.mapache_hero__cDcs4 > div.mapache_scene__FoGYI > div.mapache_plan__NALxc «main.mapache_main__pn9Nl > section.mapache_hero__cDcs4 > div»",
-      "lcpPhases": [
-        "timeToFirstByte: 13ms",
-        "resourceLoadDelay: 109ms",
-        "resourceLoadDuration: 10ms",
-        "elementRenderDelay: 95ms"
-      ],
-      "renderBlocking": [
-        "/_next/static/css/bcabf2e6bde7e80e.css 307ms",
-        "/_next/static/css/c0c0550ae8fbba94.css 457ms",
-        "/_next/static/css/2ebc8de0aebf96ae.css 157ms"
-      ],
-      "contrast": [],
-      "a11yNodes": {},
-      "bpDetail": {},
-      "jsKb": 125.8,
-      "cssKb": 23.2,
-      "jsCssKb": 149,
-      "biggest": [
-        "/_next/static/chunks/3f81c6bc-7fca4c3253141276.js 53.5KB",
-        "/_next/static/chunks/268-5404169f0f4d960c.js 45.7KB",
-        "/_next/static/css/c0c0550ae8fbba94.css 13.6KB",
-        "/_next/static/chunks/681-1ac126fbefecf5ba.js 13.1KB",
-        "/_next/static/chunks/app/%255Fs/%5Bsite%5D/%5Bcountry%5D/%5Bvariant%5D/%5Bdetected%5D/page-09d229327f58e5ff.js 10.6KB",
-        "/_next/static/css/bcabf2e6bde7e80e.css 7.2KB"
-      ],
-      "unusedJs": [
-        "/_next/static/chunks/268-5404169f0f4d960c.js −21.3KB"
-      ],
-      "failing": {
-        "performance": [],
-        "accessibility": [],
-        "best-practices": []
-      },
-      "runsPerf": [
-        97,
-        98,
-        97
-      ],
-      "runsLcp": [
-        2406,
-        2339,
-        2415
+        2628,
+        2545,
+        2520
       ],
       "pass": false
     }

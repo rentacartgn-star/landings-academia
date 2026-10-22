@@ -68,7 +68,8 @@ export async function landingState(page: Page) {
   });
 }
 
-export const LOCALE: Record<string, string> = { ES: 'es-ES', US: 'en-US' };
+// `lang` = locale del copy escrito (en-US no tiene copy en v1 y cae a es-419; F7 corregido por A0).
+export const LOCALE: Record<string, string> = { ES: 'es-ES' };
 export const localeOf = (c: string) => LOCALE[c] ?? 'es-419';
 
 /** Botón visible del selector de país (hay uno en el hero y otro en el footer). */

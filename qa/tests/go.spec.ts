@@ -5,7 +5,9 @@ import { CATALOG, SITES, expectedOffers, landingUrl, captureBeacons } from './he
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 const SAFARI = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1';
 
+test.describe.configure({ mode: 'parallel' });
 test('todas las ofertas activas: /go → 302 con click_id en la URL final', async ({ request }) => {
+  test.skip(!!process.env.QA_GATE, 'con el gate cerrado /go no sale al operador');
   const active = CATALOG.offers.filter((o) => o.active);
   expect(active.length).toBeGreaterThan(0);
   const ids = new Set<string>();
@@ -27,6 +29,7 @@ test('todas las ofertas activas: /go → 302 con click_id en la URL final', asyn
 });
 
 test('/go: placements, bots, HEAD, oferta inexistente', async ({ request }) => {
+  test.skip(!!process.env.QA_GATE, 'pasada normal');
   const id = CATALOG.offers[0]!.id;
   for (const p of ['hero', 'ranking', 'sticky', 'final', 'single', 'basura', '']) {
     const r = await request.get(`/go/${id}?p=${p}`, { maxRedirects: 0, headers: { 'user-agent': SAFARI } });
@@ -73,6 +76,7 @@ for (const site of SITES) {
 }
 
 test('sin JavaScript los CTA siguen siendo /go (funciona sin JS)', async ({ browser, baseURL }) => {
+  test.skip(!!process.env.QA_GATE, 'pasada normal');
   const ctx = await browser.newContext({ javaScriptEnabled: false, baseURL, viewport: { width: 390, height: 664 }, userAgent: SAFARI });
   const page = await ctx.newPage();
   await page.goto(landingUrl('diamond', 'ES'));
@@ -82,4 +86,14 @@ test('sin JavaScript los CTA siguen siendo /go (funciona sin JS)', async ({ brow
   await page.locator('[id$="-hero-cta"]').click();
   expect(new URL((await opReq).url()).searchParams.get('subid')).toMatch(UUID);
   await ctx.close();
+});
+
+// Gate P9 en /go (F4): con el mercado sin aprobar, nunca se sale al operador.
+test('gate cerrado: /go no redirige al operador', async ({ request }) => {
+  test.skip(!process.env.QA_GATE, 'solo en la pasada QA_GATE=closed');
+  for (const o of CATALOG.offers.filter((x) => x.active)) {
+    const r = await request.get(`/go/${o.id}?p=hero`, { maxRedirects: 0, headers: { 'user-agent': SAFARI } });
+    expect([302, 404], o.id).toContain(r.status());
+    expect(r.headers()['location'] ?? '/', o.id).not.toMatch(/^https?:/);
+  }
 });
