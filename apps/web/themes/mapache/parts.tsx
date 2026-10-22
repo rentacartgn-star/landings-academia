@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { fill, type LandingProps, type Offer, type Operator } from '@la/contracts';
 import { COUNTRY_NAMES } from '@la/config/countries';
 import { CountrySwitcher, OfferViewTracker, TrackedCta } from '@/components/ui';
+import { FINEPRINT } from './fineprint';
 import s from './mapache.module.css';
 
 export const HERO_CTA_ID = 'm-hero-cta';
@@ -141,26 +142,56 @@ export function Headline({ text, as = 'h1' }: { text: string; as?: 'h1' | 'h2' }
   const Tag = as;
   return (
     <Tag className={as === 'h1' ? s.h1 : s.h2big}>
-      {dark && <span className={s.dark}>{dark} </span>}
+      {/* Spans en línea (no bloque): el h1 entero es un único candidato a LCP. */}
+      {dark && (
+        <>
+          <span className={s.dark}>{dark}</span>
+          <br />
+        </>
+      )}
       <span className={s.lit}>{lit}</span>
     </Tag>
   );
 }
 
 /** Escena del hero: la cabeza del logo y la "letra pequeña", casi invisibles a oscuras; la linterna (data-lens) las revela. */
+/** Rejilla + letra pequeña como patrones SVG en línea. */
+function Plan({ id, className }: { id: string; className?: string }) {
+  return (
+    <svg className={className} aria-hidden="true" focusable="false">
+      <defs>
+        <pattern id={`${id}g`} width="32" height="32" patternUnits="userSpaceOnUse" x="-1" y="-1">
+          <path d="M32 .5H.5V32" fill="none" stroke="#F4EFE6" strokeOpacity=".35" />
+        </pattern>
+        <pattern
+          id={`${id}f`}
+          width="480"
+          height="480"
+          patternUnits="userSpaceOnUse"
+          x="-12"
+          y="20"
+          dangerouslySetInnerHTML={{ __html: `<g fill="none" stroke-linecap="round">${FINEPRINT}</g>` }}
+        />
+      </defs>
+      <rect width="100%" height="100%" fill={`url(#${id}g)`} />
+      <rect width="100%" height="100%" fill={`url(#${id}f)`} />
+    </svg>
+  );
+}
+
 export function LensScene() {
   return (
     <>
       <div className={s.scene} aria-hidden="true">
         <i className={s.glowA} />
         <i className={s.glowB} />
-        <div className={s.plan} />
-        <Head size="lg" className={s.ghost} />
+        <Plan id="mpd" className={s.plan} />
+        <i className={s.ghost} />
       </div>
       <div className={s.lens} data-lens aria-hidden="true">
         <div className={s.lensInner} data-lens-inner>
-          <div className={`${s.plan} ${s.planLit}`} />
-          <Head size="lg" className={`${s.ghost} ${s.ghostLit}`} />
+          <Plan id="mpl" className={`${s.plan} ${s.planLit}`} />
+          <i className={`${s.ghost} ${s.ghostLit}`} />
         </div>
       </div>
     </>

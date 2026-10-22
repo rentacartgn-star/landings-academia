@@ -10,7 +10,7 @@ export const palette = {
   ink2: '#141414',
   text: '#FFFFFF', // blanco del wordmark "MAPACHE"
   textMuted: '#A8A298',
-  textDim: '#6F6A62',
+  textDim: '#9C968C', // ≥ 4,5:1 también sobre el cristal más claro (#2a2a2a)
   gold: '#E6B862', // dorado del logo (medido sobre el PNG original)
   goldHi: '#F5D28E',
   goldLo: '#C4913C',

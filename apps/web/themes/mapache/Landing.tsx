@@ -61,7 +61,7 @@ export function MapacheLanding(p: LandingProps) {
                     <Cta
                       id={HERO_CTA_ID}
                       offer={top}
-                      placement={p.layout === 'single' ? 'single' : 'hero'}
+                      placement="hero"
                       label={heroCtaLabel}
                     />
                   }
