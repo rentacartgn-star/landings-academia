@@ -275,10 +275,10 @@ function Avatar({ p }: { p: LandingProps }) {
       <img
         src={small}
         srcSet={small !== p.site.avatarUrl ? `${small} 256w, ${p.site.avatarUrl} 640w` : undefined}
-        sizes="(min-width: 980px) 84px, 108px"
+        sizes="(min-width: 980px) 84px, 76px"
         alt={p.site.brandName}
-        width={108}
-        height={108}
+        width={84}
+        height={84}
         fetchPriority="high"
         decoding="async"
       />

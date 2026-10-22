@@ -11,7 +11,7 @@ export const palette = {
   /** Blanco diamante y plata ("PICKS"). */
   diamond: '#F4F6FB',
   silver: '#A9B3C6',
-  silverFaint: '#6F7B92',
+  silverFaint: '#8A95AB', // ≥ 5:1 sobre marino y sobre el vidrio (F8)
   /** Metal del aro del logo: oro para acentos y cifras, bronce para sombras del metal. */
   gold: '#E4C07E',
   goldRgb: '228, 192, 126',

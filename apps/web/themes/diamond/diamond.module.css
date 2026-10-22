@@ -177,7 +177,7 @@
   gap: 12px;
   max-width: 1260px;
   margin: 0 auto;
-  padding: 16px 20px 6px;
+  padding: 10px 20px 4px;
 }
 .wordmark {
   display: inline-flex;
@@ -316,9 +316,9 @@
 }
 .heroGem {
   position: absolute;
-  top: -10px;
-  right: -78px;
-  width: 232px;
+  top: -12px;
+  right: -70px;
+  width: 196px;
   z-index: 0;
 }
 .heroText {
@@ -330,15 +330,16 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 14px;
-  min-height: 168px;
-  padding: 6px 150px 0 0;
+  gap: 10px;
+  min-height: 0;
+  padding: 0 130px 0 0;
 }
 .avatar {
   position: relative;
   display: block;
   flex: none;
-  width: 108px;
-  height: 108px;
+  width: 76px;
+  height: 76px;
   padding: 3px;
   border-radius: 50%;
   background: conic-gradient(from 210deg, #f6dfae, #8a5a32, #e9c88a, #5a3a20, #d7a96a, #f6dfae);
@@ -391,9 +392,9 @@
   color: var(--dm-accent);
 }
 .h1 {
-  margin: 4px 0 18px;
+  margin: 14px 0 10px;
   padding-bottom: 0.06em;
-  font-size: clamp(38px, 10.6vw, 88px);
+  font-size: clamp(34px, 9.1vw, 88px);
   font-weight: 900;
   line-height: 0.98;
   letter-spacing: -0.048em;
@@ -404,9 +405,9 @@
   color: transparent;
 }
 .sub {
-  max-width: 36ch;
-  font-size: 15.5px;
-  line-height: 1.5;
+  max-width: 38ch;
+  font-size: 14.5px;
+  line-height: 1.45;
   color: var(--dm-muted);
   text-wrap: pretty;
 }
@@ -414,18 +415,18 @@
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 14px;
-  margin-top: 22px;
+  gap: 12px;
+  margin-top: 16px;
 }
 .heroChip {
-  padding: 16px 18px 16px;
+  padding: 12px 16px 13px;
   border-radius: 24px;
 }
 .heroChipHead {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 .heroOp {
   font-size: 16px;
@@ -1415,16 +1416,15 @@
 :global(html[data-dm-motion]) .ctaHero {
   animation-delay: 0.28s;
 }
+/* Sin opacidad: nada del primer viewport parte de opacity:0 (LCP) */
 @keyframes dmGemIn {
   from {
-    opacity: 0;
-    transform: scale(0.86) rotate(-8deg);
+    transform: scale(0.88) rotate(-8deg);
   }
 }
 @keyframes dmPop {
   from {
-    opacity: 0;
-    transform: translate3d(0, 20px, 0) scale(0.92);
+    transform: translate3d(0, 14px, 0) scale(0.96);
   }
 }
 
