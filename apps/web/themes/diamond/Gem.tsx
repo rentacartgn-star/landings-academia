@@ -21,12 +21,12 @@ export function Gem({ id, className, glints = true }: Props) {
         <defs>
           <radialGradient id={`${id}-depth`} cx="38%" cy="30%" r="80%">
             <stop offset="0" stopColor="#fff" stopOpacity=".16" />
-            <stop offset=".55" stopColor="#9FE8FF" stopOpacity="0" />
-            <stop offset="1" stopColor="#000" stopOpacity=".55" />
+            <stop offset=".55" stopColor="#86E6FF" stopOpacity="0" />
+            <stop offset="1" stopColor="#050a18" stopOpacity=".55" />
           </radialGradient>
           <linearGradient id={`${id}-rim`} x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stopColor="#fff" stopOpacity=".95" />
-            <stop offset=".45" stopColor="#9FE8FF" stopOpacity=".35" />
+            <stop offset=".45" stopColor="#E4C07E" stopOpacity=".55" />
             <stop offset="1" stopColor="#fff" stopOpacity=".7" />
           </linearGradient>
           <clipPath id={`${id}-round`}>
@@ -34,8 +34,8 @@ export function Gem({ id, className, glints = true }: Props) {
           </clipPath>
           {FACETS.map((f, i) => (
             <linearGradient key={i} id={`${id}-f${i}`} gradientUnits="userSpaceOnUse" x1={f.g[0].toFixed(1)} y1={f.g[1].toFixed(1)} x2={f.g[2].toFixed(1)} y2={f.g[3].toFixed(1)}>
-              <stop offset="0" stopColor={toneColor(f.tone + 0.22)} />
-              <stop offset="1" stopColor={toneColor(f.tone - 0.2)} />
+              <stop offset="0" stopColor={toneColor(f.tone + 0.22, i)} />
+              <stop offset="1" stopColor={toneColor(f.tone - 0.2, i + 100)} />
             </linearGradient>
           ))}
         </defs>

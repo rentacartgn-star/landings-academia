@@ -268,10 +268,20 @@ function TrustBar({ p }: { p: LandingProps }) {
 }
 
 function Avatar({ p }: { p: LandingProps }) {
-  // Engaste de bisel con cuatro garras, como una sortija.
+  // El logo circular del canal, engastado en un bisel de bronce con cuatro garras, como una sortija.
+  const small = p.site.avatarUrl.replace(/logo\.webp$/, 'logo-256.webp');
   return (
     <span className={s.avatar}>
-      <img src={p.site.avatarUrl} alt={p.site.memberName} width={64} height={64} fetchPriority="high" />
+      <img
+        src={small}
+        srcSet={small !== p.site.avatarUrl ? `${small} 256w, ${p.site.avatarUrl} 640w` : undefined}
+        sizes="(min-width: 980px) 84px, 108px"
+        alt={p.site.brandName}
+        width={108}
+        height={108}
+        fetchPriority="high"
+        decoding="async"
+      />
       <i className={s.prong} />
       <i className={s.prong} />
       <i className={s.prong} />

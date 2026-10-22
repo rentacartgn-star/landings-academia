@@ -1,7 +1,7 @@
 /* [A2] Diamond · joyería nocturna. Todos los colores salen de --dm-* (tokens.ts). Solo se anima transform/opacity. */
 
 :global(html):has(.root) {
-  background: #050507;
+  background: #0a1020;
   color-scheme: dark;
 }
 
@@ -44,7 +44,7 @@
   max-width: 100%;
 }
 .root :focus-visible {
-  outline: 2px solid var(--dm-ice);
+  outline: 2px solid var(--dm-accent);
   outline-offset: 3px;
   border-radius: 12px;
 }
@@ -70,7 +70,7 @@
   height: 130vmax;
   left: -10vmax;
   top: -78vmax;
-  background: radial-gradient(closest-side, rgba(159, 232, 255, 0.16), rgba(159, 232, 255, 0.04) 55%, transparent 72%);
+  background: radial-gradient(closest-side, rgba(var(--dm-holo-rgb), 0.13), rgba(var(--dm-holo-rgb), 0.035) 55%, transparent 72%);
   animation: dmDrift 26s ease-in-out infinite alternate;
 }
 .lightB {
@@ -78,7 +78,7 @@
   height: 90vmax;
   right: -52vmax;
   top: 30vh;
-  background: radial-gradient(closest-side, rgba(196, 181, 255, 0.09), transparent 70%);
+  background: radial-gradient(closest-side, rgba(255, 143, 216, 0.08), rgba(168, 139, 255, 0.06) 45%, transparent 70%);
   animation: dmDrift 34s ease-in-out -9s infinite alternate-reverse;
 }
 .lightC {
@@ -86,7 +86,7 @@
   height: 100vmax;
   left: -60vmax;
   bottom: -70vmax;
-  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.06), transparent 70%);
+  background: radial-gradient(closest-side, rgba(var(--dm-accent-rgb), 0.07), transparent 70%);
   animation: dmDrift 40s ease-in-out -4s infinite alternate;
 }
 @keyframes dmDrift {
@@ -122,7 +122,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, #fff 0 1.4px, rgba(159, 232, 255, 0.55) 2.2px, transparent 5px),
+  background: radial-gradient(circle, #fff 0 1.4px, rgba(var(--dm-holo-rgb), 0.6) 2.2px, transparent 5px),
     linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95) 50%, transparent) center / 100% 1px no-repeat,
     linear-gradient(transparent, rgba(255, 255, 255, 0.95) 50%, transparent) center / 1px 100% no-repeat;
 }
@@ -190,8 +190,8 @@
 .wordGlyph {
   width: 20px;
   height: 17px;
-  color: var(--dm-ice);
-  filter: drop-shadow(0 0 6px rgba(159, 232, 255, 0.6));
+  color: var(--dm-accent);
+  filter: drop-shadow(0 0 6px rgba(var(--dm-accent-rgb), 0.6));
 }
 .handle {
   font-size: 13px;
@@ -209,7 +209,7 @@
   position: absolute;
   inset: -22%;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(159, 232, 255, 0.24), rgba(159, 232, 255, 0.07) 52%, transparent 74%);
+  background: radial-gradient(closest-side, rgba(var(--dm-holo-rgb), 0.2), rgba(184, 156, 255, 0.08) 52%, transparent 74%);
 }
 .gemHalo::after {
   content: '';
@@ -227,7 +227,7 @@
   width: 100%;
   height: 100%;
   overflow: visible;
-  filter: drop-shadow(0 28px 50px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 30px rgba(159, 232, 255, 0.18));
+  filter: drop-shadow(0 28px 50px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 30px rgba(var(--dm-holo-rgb), 0.2));
 }
 .gemFire,
 .gemSheen {
@@ -330,17 +330,18 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 14px;
-  min-height: 150px;
-  padding: 8px 170px 0 0;
+  min-height: 168px;
+  padding: 6px 150px 0 0;
 }
 .avatar {
   position: relative;
   display: block;
-  width: 62px;
-  height: 62px;
+  flex: none;
+  width: 108px;
+  height: 108px;
   padding: 3px;
   border-radius: 50%;
-  background: conic-gradient(from 210deg, #ffffff, #7d8794, #eef3f7, #59626d, #dfe7ee, #ffffff);
+  background: conic-gradient(from 210deg, #f6dfae, #8a5a32, #e9c88a, #5a3a20, #d7a96a, #f6dfae);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 .avatar img {
@@ -348,7 +349,7 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  background: #0b0c10;
+  background: var(--dm-bg-up);
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.6);
 }
 /* Garras del engaste */
@@ -366,7 +367,7 @@
   height: 9px;
   margin-left: -3.5px;
   border-radius: 50% 50% 45% 45%;
-  background: radial-gradient(circle at 35% 30%, #fff, #a9b3bd 55%, #4b535c);
+  background: radial-gradient(circle at 35% 30%, #fff1cf, #c9975c 55%, #5a3a20);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 .prong:nth-of-type(1) {
@@ -387,7 +388,7 @@
   line-height: 1.35;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--dm-ice);
+  color: var(--dm-accent);
 }
 .h1 {
   margin: 4px 0 18px;
@@ -397,7 +398,7 @@
   line-height: 0.98;
   letter-spacing: -0.048em;
   text-wrap: balance;
-  background: linear-gradient(176deg, #ffffff 30%, #d9e6ee 62%, #a9c7d3 100%);
+  background: linear-gradient(176deg, #ffffff 40%, #eceff6 70%, #e6cf9c 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -476,8 +477,8 @@
   height: 32px;
   padding: 0 6px;
   border-radius: 999px;
-  background: rgba(159, 232, 255, 0.12);
-  color: var(--dm-ice);
+  background: rgba(var(--dm-accent-rgb), 0.12);
+  color: var(--dm-accent);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.06em;
@@ -493,7 +494,7 @@
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.16),
     inset 0 0 0 1px rgba(255, 255, 255, 0.07),
-    inset 0 -24px 40px -30px rgba(159, 232, 255, 0.1),
+    inset 0 -24px 40px -30px rgba(var(--dm-holo-rgb), 0.1),
     0 24px 60px rgba(0, 0, 0, 0.45);
   overflow: hidden;
 }
@@ -525,7 +526,7 @@
   bottom: -20%;
   left: 0;
   width: 55%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.07) 45%, rgba(159, 232, 255, 0.09) 52%, transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.07) 45%, rgba(var(--dm-holo-rgb), 0.09) 52%, transparent);
   transform: translate3d(-120%, 0, 0);
 }
 
@@ -613,7 +614,7 @@
   transform: scale(0.98);
 }
 .ctaGhost .arrow {
-  color: var(--dm-ice);
+  color: var(--dm-accent);
   width: 17px;
   height: 17px;
 }
@@ -646,7 +647,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--dm-ice);
+  color: var(--dm-accent);
 }
 .bonus {
   display: grid;
@@ -674,7 +675,7 @@
   display: inline-block;
   padding: 11px 0;
   margin: -11px 0;
-  color: var(--dm-ice) !important;
+  color: var(--dm-accent) !important;
   font-weight: 700;
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -694,8 +695,8 @@
   width: 7px;
   height: 7px;
   transform: rotate(45deg);
-  background: var(--dm-ice);
-  box-shadow: 0 0 10px var(--dm-ice);
+  background: var(--dm-accent);
+  box-shadow: 0 0 10px var(--dm-accent);
 }
 
 .section {
@@ -716,7 +717,7 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.16em;
-  color: var(--dm-ice);
+  color: var(--dm-accent);
   font-variant-numeric: tabular-nums;
 }
 .secGlyph {
@@ -774,7 +775,7 @@
   line-height: 0.9;
   letter-spacing: -0.05em;
   font-variant-numeric: tabular-nums;
-  background: linear-gradient(160deg, #fff, var(--dm-ice) 60%, #6fb7cc);
+  background: linear-gradient(160deg, #fff4dc, var(--dm-accent) 55%, var(--dm-bronze));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -786,14 +787,14 @@
   gap: 8px;
   padding: 7px 13px 7px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(159, 232, 255, 0.35);
-  background: rgba(159, 232, 255, 0.09);
-  color: var(--dm-ice);
+  border: 1px solid rgba(var(--dm-accent-rgb), 0.35);
+  background: rgba(var(--dm-accent-rgb), 0.09);
+  color: var(--dm-accent);
   font-size: 11.5px;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  box-shadow: 0 0 24px -6px rgba(159, 232, 255, 0.45);
+  box-shadow: 0 0 24px -6px rgba(var(--dm-accent-rgb), 0.45);
 }
 .pickGlyph {
   width: 15px;
@@ -864,7 +865,7 @@
   width: 8px;
   height: 8px;
   transform: rotate(45deg);
-  background: linear-gradient(135deg, var(--dm-ice) calc(var(--f) * 100%), rgba(255, 255, 255, 0.16) 0);
+  background: linear-gradient(135deg, var(--dm-accent) calc(var(--f) * 100%), rgba(255, 255, 255, 0.16) 0);
 }
 
 /* Compactas */
@@ -883,7 +884,7 @@
   font-size: 22px;
   font-weight: 300;
   letter-spacing: -0.04em;
-  color: var(--dm-ice);
+  color: var(--dm-accent);
   font-variant-numeric: tabular-nums;
 }
 .compactName {
@@ -943,7 +944,7 @@
   line-height: 1;
   letter-spacing: -0.05em;
   font-variant-numeric: tabular-nums;
-  background: linear-gradient(100deg, #fff 10%, var(--dm-ice) 40%, #c4b5ff 70%, #ffb3d1 95%);
+  background: linear-gradient(100deg, #fff 10%, var(--dm-holo) 40%, #b89cff 70%, #ff9ad8 95%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -977,8 +978,8 @@
   width: 8px;
   height: 8px;
   transform: rotate(45deg);
-  background: var(--dm-ice);
-  box-shadow: 0 0 12px var(--dm-ice);
+  background: var(--dm-accent);
+  box-shadow: 0 0 12px var(--dm-accent);
 }
 .riviera {
   position: relative;
@@ -994,7 +995,7 @@
   top: 22px;
   bottom: 22px;
   width: 1px;
-  background: linear-gradient(var(--dm-ice), rgba(159, 232, 255, 0.25) 60%, transparent);
+  background: linear-gradient(var(--dm-accent), rgba(var(--dm-accent-rgb), 0.25) 60%, transparent);
   opacity: 0.6;
 }
 .stone {
@@ -1013,7 +1014,7 @@
   border-radius: 50%;
   color: #fff;
   background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.04) 60%), var(--dm-bg-up);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18), 0 0 0 5px var(--dm-bg), 0 0 26px -4px rgba(159, 232, 255, 0.55);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18), 0 0 0 5px var(--dm-bg), 0 0 26px -4px rgba(var(--dm-accent-rgb), 0.55);
 }
 .stoneGem svg {
   width: 20px;
@@ -1023,7 +1024,7 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.16em;
-  color: var(--dm-ice);
+  color: var(--dm-accent);
   font-variant-numeric: tabular-nums;
 }
 .stone h3 {
@@ -1071,7 +1072,7 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: rgba(159, 232, 255, 0.1);
+  background: rgba(var(--dm-accent-rgb), 0.1);
   transition: transform 0.35s cubic-bezier(0.34, 1.32, 0.64, 1);
 }
 .plus::before,
@@ -1084,7 +1085,7 @@
   height: 1.6px;
   margin: -0.8px 0 0 -5.5px;
   border-radius: 1px;
-  background: var(--dm-ice);
+  background: var(--dm-accent);
 }
 .plus::after {
   transform: rotate(90deg);
@@ -1120,9 +1121,9 @@
   height: 64px;
   margin: 10px 0 4px;
   border-radius: 50%;
-  color: var(--dm-ice);
+  color: var(--dm-accent);
   background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.03) 65%);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16), 0 0 40px -6px rgba(159, 232, 255, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16), 0 0 40px -6px rgba(var(--dm-accent-rgb), 0.5);
 }
 .finalMark svg {
   width: 28px;
@@ -1197,7 +1198,7 @@
 .rgHelp a {
   display: inline-block;
   padding: 12px 0;
-  color: var(--dm-ice);
+  color: var(--dm-accent);
   font-weight: 700;
   text-underline-offset: 3px;
 }
@@ -1329,7 +1330,7 @@
   cursor: pointer;
 }
 .dialogItem[aria-current='true'] {
-  color: var(--dm-ice);
+  color: var(--dm-accent);
 }
 .dialogClose {
   width: 100%;
@@ -1557,7 +1558,7 @@
     grid-template-areas: 'text gem' 'offer gem';
     grid-template-rows: auto 1fr;
     column-gap: 48px;
-    padding: 56px 40px 0;
+    padding: 28px 40px 0;
     min-height: min(820px, calc(100vh - 100px));
   }
   .heroGem {
@@ -1575,9 +1576,17 @@
   .ident {
     flex-direction: row;
     align-items: center;
+    gap: 20px;
     min-height: 0;
     padding: 0;
-    margin-bottom: 26px;
+    margin-bottom: 20px;
+  }
+  .avatar {
+    width: 84px;
+    height: 84px;
+  }
+  .h1 {
+    font-size: clamp(56px, 5.4vw, 80px);
   }
   .sub {
     font-size: 18px;
@@ -1586,7 +1595,7 @@
     grid-area: offer;
     align-self: start;
     max-width: 540px;
-    margin-top: 30px;
+    margin-top: 22px;
   }
   .ctaHero {
     justify-self: start;
@@ -1642,7 +1651,7 @@
     bottom: auto;
     width: auto;
     height: 1px;
-    background: linear-gradient(90deg, var(--dm-ice), rgba(159, 232, 255, 0.25) 70%, transparent);
+    background: linear-gradient(90deg, var(--dm-accent), rgba(var(--dm-accent-rgb), 0.25) 70%, transparent);
   }
   .stoneGem {
     left: 0;

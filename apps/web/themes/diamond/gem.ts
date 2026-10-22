@@ -89,13 +89,33 @@ export const FACETS = build();
 /** Contorno del cinturón (16 lados, como lo dibujan las medias de cinturón). */
 export const TABLE = Array.from({ length: 8 }, (_, k) => fmt(pt(T, k * 45 + 22.5))).join(' ');
 
-/** Gris obsidiana → blanco diamante, con un punto de hielo en los medios tonos. */
-export function toneColor(t: number): string {
+// Holograma del logo: rosa, cian y violeta dominan; menta y champán solo de vez en cuando.
+const HOLO: [number, number, number][] = [
+  [255, 143, 216],
+  [134, 230, 255],
+  [168, 139, 255],
+  [134, 230, 255],
+  [255, 143, 216],
+  [168, 139, 255],
+  [140, 255, 217],
+  [255, 212, 138],
+];
+
+/** Marino profundo → blanco diamante, con un velo holográfico en los medios tonos (`h` = faceta). */
+export function toneColor(t: number, h = -1): string {
   const c = Math.max(0, Math.min(1, t));
-  const r = Math.round(6 + (246 - 6) * c ** 1.25);
-  const g = Math.round(7 + (250 - 7) * c ** 1.15);
-  const b = Math.round(10 + (253 - 10) * c ** 1.05);
-  return `rgb(${r},${g},${b})`;
+  let r = 10 + (246 - 10) * c ** 1.25;
+  let g = 16 + (248 - 16) * c ** 1.15;
+  let b = 32 + (253 - 32) * c ** 1.05;
+  if (h >= 0) {
+    const [hr, hg, hb] = HOLO[Math.floor(jitter(h * 7 + 3) * HOLO.length)]!;
+    // Más color en los medios tonos; los negros y los destellos blancos se quedan limpios.
+    const w = 0.16 + 0.5 * Math.sin(Math.PI * c) * jitter(h + 51);
+    r += (hr - r) * w;
+    g += (hg - g) * w;
+    b += (hb - b) * w;
+  }
+  return `rgb(${Math.round(r)},${Math.round(g)},${Math.round(b)})`;
 }
 
 /** Máscara SVG (data URI) con solo las facetas que "dan fuego", para la capa espectral. */

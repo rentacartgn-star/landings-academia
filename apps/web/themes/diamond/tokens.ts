@@ -1,40 +1,48 @@
 // [A2] Diamond · tokens. ÚNICO sitio donde vive la paleta: cambiar aquí cambia todo el tema
-// (el CSS solo lee variables --dm-*). Cuando lleguen las capturas del canal, se ajusta este archivo.
+// (el CSS solo lee variables --dm-*). Ronda 2: sale del logo del canal (azul marino pizarra,
+// aro de bronce/oro, diamante holográfico rosa-cian-violeta, "DIAMOND" dorado y "PICKS" plateado).
 import type { CSSProperties } from 'react';
 import type { ThemeTokens } from '@la/contracts';
 
-/** Paleta extendida "joyería nocturna". */
 export const palette = {
-  /** Negro obsidiana: neutro con un punto frío, nunca azul (eso es de Kronos). */
-  obsidian: '#050507',
-  obsidianUp: '#0B0C10',
-  /** Blanco diamante. */
-  diamond: '#F6F9FC',
-  diamondMuted: '#A3ACB7',
-  diamondFaint: '#6B737D',
-  /** Acento hielo: hairlines, cifras, destellos. */
-  ice: '#9FE8FF',
-  /** Único color de acción: esmeralda luminosa. */
-  emerald: '#19D98E',
-  emeraldDeep: '#0EA968',
+  /** Azul marino profundo: el fondo del logo, un punto más oscuro para dar profundidad al vidrio. */
+  navy: '#0A1020',
+  navyUp: '#121B30',
+  /** Blanco diamante y plata ("PICKS"). */
+  diamond: '#F4F6FB',
+  silver: '#A9B3C6',
+  silverFaint: '#6F7B92',
+  /** Metal del aro del logo: oro para acentos y cifras, bronce para sombras del metal. */
+  gold: '#E4C07E',
+  goldRgb: '228, 192, 126',
+  bronze: '#A8784A',
+  /** Holograma del diamante del logo: reflejos, destellos y "fuego". */
+  holo: '#86E6FF',
+  holoRgb: '134, 230, 255',
+  fire: ['#FF8FD8', '#FFD48A', '#8CFFD9', '#86E6FF', '#A88BFF'] as const,
+  /**
+   * Único color de acción: esmeralda. Con marino + oro es el par clásico de joyería, no compite con el
+   * oro de los acentos y con tinta oscura da ~11:1 de contraste. El rojo del subrayado del logo no se usa
+   * (§8.1: nada de rojo chillón).
+   */
+  emerald: '#1EDC93',
+  emeraldDeep: '#0DAA6B',
   emeraldInk: '#03150D',
-  /** "Fuego" del diamante: dispersión espectral, solo en bordes finos y a baja opacidad. */
-  fire: ['#FF7EB6', '#FFCF70', '#7DFFC0', '#7FE3FF', '#A98BFF'] as const,
-  /** Vidrio. */
-  glass: 'rgba(17,19,25,.62)',
-  glassStrong: 'rgba(14,16,21,.84)',
+  /** Vidrio teñido de marino. */
+  glass: 'rgba(20,30,54,.58)',
+  glassStrong: 'rgba(14,22,40,.88)',
   hairline: 'rgba(255,255,255,.12)',
   hairlineStrong: 'rgba(255,255,255,.22)',
 } as const;
 
 export const tokens: ThemeTokens = {
   colors: {
-    bg: palette.obsidian,
-    bgElevated: palette.obsidianUp,
+    bg: palette.navy,
+    bgElevated: palette.navyUp,
     surface: palette.glass,
     text: palette.diamond,
-    textMuted: palette.diamondMuted,
-    accent: palette.ice,
+    textMuted: palette.silver,
+    accent: palette.gold,
     cta: palette.emerald,
     ctaText: palette.emeraldInk,
     border: palette.hairline,
@@ -47,12 +55,16 @@ export const tokens: ThemeTokens = {
 export function cssVars(): CSSProperties {
   const [f1, f2, f3, f4, f5] = palette.fire;
   return {
-    '--dm-bg': palette.obsidian,
-    '--dm-bg-up': palette.obsidianUp,
+    '--dm-bg': palette.navy,
+    '--dm-bg-up': palette.navyUp,
     '--dm-text': palette.diamond,
-    '--dm-muted': palette.diamondMuted,
-    '--dm-faint': palette.diamondFaint,
-    '--dm-ice': palette.ice,
+    '--dm-muted': palette.silver,
+    '--dm-faint': palette.silverFaint,
+    '--dm-accent': palette.gold,
+    '--dm-accent-rgb': palette.goldRgb,
+    '--dm-bronze': palette.bronze,
+    '--dm-holo': palette.holo,
+    '--dm-holo-rgb': palette.holoRgb,
     '--dm-cta': palette.emerald,
     '--dm-cta-deep': palette.emeraldDeep,
     '--dm-cta-ink': palette.emeraldInk,
