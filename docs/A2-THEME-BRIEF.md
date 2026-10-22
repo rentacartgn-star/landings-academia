@@ -55,3 +55,10 @@ Corto: concepto, tokens (paleta), decisiones de motion, peso aproximado del JS d
 - **La paleta y los motivos del tema salen del logo del canal.** Rehaz `tokens.ts` y lo que haga falta para que la landing se sienta la extensión natural del canal, en liquid glass muy moderno y premium (no copies el estilo "grunge"/brush del logo en la UI: el logo aporta color, motivo y actitud; la UI sigue siendo Apple-level).
 - Siguen vigentes todas las reglas de compliance y de integración. Además: **no recrees personajes ni marcas de terceros** (p. ej. máscaras de superhéroes, escudos de clubes reales); usa el logo del miembro tal cual y motivos propios.
 - Rehaz las capturas (390 y 1440, ES/EC/MX/FR) en `qa/screens/<siteId>/` (borra las antiguas) y regenera `og.png` con el logo real.
+
+## Ronda 3 · fallos de QA (A6) que tocan a los temas
+- **Cambio de A0:** cada sitio tiene ahora su ruta `app/%5Fs/<siteId>/[country]/[variant]/[detected]/page.tsx`, que importa tu tema de forma estática. Tu CSS ya solo se carga en tu sitio. No toques esas rutas.
+- **F2 (P1) CTA del hero en la primera pantalla:** a **390×664** (Safari iPhone 13 / in-app IG-TikTok) el CTA primario del hero tiene que verse entero sin hacer scroll, en ES (single) y MX (ranking). Compacta el hero (avatar, eyebrow, titular, subtítulo, espacios) lo necesario; el titular puede ser algo menor en móvil. Verifícalo midiendo `getBoundingClientRect().bottom` del CTA ≤ 664.
+- **LCP < 2 s:** el elemento LCP no puede entrar con animación de opacidad ni depender de JS (en Diamond lo era `p.terms` con `dmPop`). Nada del primer viewport con `opacity:0` inicial.
+- **F8 contraste ≥ 4,5:1** en todo texto, sobre todo el +18, disclaimers, handle, tagline (Diamond `.handle/.tagline/.disclaimer` 4,24; DonPool `.dp-foot__disc/.dp-foot__age` 3,62).
+- **F9 placement:** el CTA del hero usa `placement="hero"` también en el layout single; `single` solo para el CTA de la tarjeta de oferta grande si es otro botón distinto.
