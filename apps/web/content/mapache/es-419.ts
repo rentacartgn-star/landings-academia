@@ -30,7 +30,7 @@ const content: SiteContent = {
     trustLine: 'TODO(sergi) seguidores en TikTok · TODO(sergi) años analizando partidos · Solo casas con licencia en tu país',
   },
   ranking: {
-    title: 'Mis casas fichadas',
+    title: 'Mis fichajes',
     sub: 'Las casas que tengo fichadas en tu país, en orden. La primera es la mía, y abajo de cada una va su letra pequeña.',
     myPickBadge: 'La que uso yo',
   },

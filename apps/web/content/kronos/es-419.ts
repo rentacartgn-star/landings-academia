@@ -18,7 +18,7 @@ const content: SiteContent = {
     eyebrow: 'Mi método para elegir casa',
     headlineVariants: [
       'Medido, no prometido: esta es la casa que uso yo.',
-      'Te ahorro el tiempo de comparar. Esta es mi casa.',
+      'Un partido dura 90 minutos. Comparar casas, ni uno: ya lo hice yo.',
       '4 criterios, una casa: la que uso yo.',
     ],
     sub: 'Licencia en tu país, condiciones del bono escritas abajo y plazos de retiro a la vista. Cada dato lo puedes comprobar tú.',

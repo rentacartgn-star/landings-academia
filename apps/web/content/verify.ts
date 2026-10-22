@@ -37,7 +37,14 @@ const COPY_BANNED: RegExp[] = [
   /\bgolpe\b/i,
   // R1-06 (A5): "método" solo para elegir casa, nunca suelto como clave para ganar.
   /m[ée]todo Kronos(?! para elegir)/i,
+  // R2 (A0): sin referencias a superhéroes ni a su IP.
+  /deadpool|marvel|superh[ée]roe/i,
 ];
+
+/** Vetadas por sitio (R2: DonPool no es billar). */
+const SITE_BANNED: Partial<Record<(typeof SITE_IDS)[number], RegExp[]>> = {
+  donpool: [/billar/i, /\bmesas?\b/i, /cantar? la bola|canto/i, /\bclub\b/i, /\bsocios?\b/i, /\btiza\b/i],
+};
 
 const ALLOWED_VARS = new Set(['operator', 'country', 'member', 'minutes']);
 
@@ -67,7 +74,8 @@ for (const site of SITE_IDS) {
     for (const [path, text] of strings(c)) {
       if (path.startsWith('meta.'))
         for (const re of META_BANNED) if (re.test(text)) fail(where, `${path} contiene ${re} → "${text}"`);
-      for (const re of COPY_BANNED) if (re.test(text)) fail(where, `${path} contiene ${re} → "${text}"`);
+      for (const re of [...COPY_BANNED, ...(SITE_BANNED[site] ?? [])])
+        if (re.test(text)) fail(where, `${path} contiene ${re} → "${text}"`);
       for (const m of text.matchAll(/\{(\w+)\}/g))
         if (!ALLOWED_VARS.has(m[1]!)) fail(where, `${path} usa la variable desconocida {${m[1]}}`);
       if (text.includes('—')) fail(where, `${path} tiene guion largo (estilo)`);
