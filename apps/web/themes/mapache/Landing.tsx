@@ -6,7 +6,7 @@ import { cssVars } from './tokens';
 import { Fx } from './Fx';
 import {
   Brand, Creator, Cta, Eyebrow, Faq, FinalCta, Footer, HERO_CTA_ID, Headline, HowIChoose, LensScene, Mandatory,
-  Glint, OfferCard, Responsible, SectionHead, Steps, SwitchLine, TrustBar,
+  OfferCard, Responsible, SectionHead, Steps, SwitchLine, TrustBar,
 } from './parts';
 import s from './mapache.module.css';
 
@@ -80,7 +80,7 @@ export function MapacheLanding(p: LandingProps) {
               </div>
               <div className={s.heroOffer}>
                 <div className={`${s.glass} ${s.fallbackCard}`}>
-                  <Glint className={s.fallbackMark} />
+                  <img className={s.fallbackLogo} src={p.site.avatarUrl} alt={p.site.brandName} width={640} height={640} fetchPriority="high" />
                   {Object.keys(p.site.socials).length > 0 && (
                     <>
                       <p className={s.label}>{c.fallback.socialsTitle}</p>

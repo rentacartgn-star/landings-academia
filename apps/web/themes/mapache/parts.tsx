@@ -7,25 +7,35 @@ import s from './mapache.module.css';
 
 export const HERO_CTA_ID = 'm-hero-cta';
 
-// ───────────── Motivo: el brillo de unos ojos en la noche ─────────────
-// Mapache = nocturno y observador: dos destellos ámbar que miran la letra pequeña. (Sin antifaz: art. 9.2 RD 958/2020.)
+// ───────────── Motivo: la mirada del logo ─────────────
+// La marca es la cabeza de mapache del canal (head.webp, tal cual). Glint es un motivo propio derivado de ella:
+// los ojos rasgados y afilados, en el dorado del logo. Nada de antifaz (art. 9.2 RD 958/2020).
 
-const EYES = 'M3 14C9 6.5 21 5 28 11.5 21 17 9.5 18 3 14ZM61 14C55 6.5 43 5 36 11.5 43 17 54.5 18 61 14Z';
+const EYES = 'M2 5.5 27 12c-4 5.2-16.5 5.4-25-6.5ZM62 5.5 37 12c4 5.2 16.5 5.4 25-6.5Z';
 
-/** Destello de ojos: relleno (marca) o solo contorno. */
+/** Mirada afilada: relleno (marca pequeña) o solo contorno (decoración grande). */
 export function Glint({ className, outline = false }: { className?: string; outline?: boolean }) {
   return (
-    <svg className={className} viewBox="0 0 64 24" aria-hidden="true" focusable="false">
+    <svg className={className} viewBox="0 0 64 20" aria-hidden="true" focusable="false">
       {outline ? (
         <path d={EYES} fill="none" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
       ) : (
         <>
           <path d={EYES} fill="currentColor" />
-          <circle cx="19" cy="11.2" r="1.7" fill="#fff" fillOpacity=".85" />
-          <circle cx="45" cy="11.2" r="1.7" fill="#fff" fillOpacity=".85" />
+          <circle cx="19.5" cy="12.2" r="2.3" fill="#000" fillOpacity=".8" />
+          <circle cx="44.5" cy="12.2" r="2.3" fill="#000" fillOpacity=".8" />
         </>
       )}
     </svg>
+  );
+}
+
+/** Cabeza del logo del canal (PNG original recortado, fondo transparente). */
+export function Head({ className, size = 'sm', priority = false }: { className?: string; size?: 'sm' | 'lg'; priority?: boolean }) {
+  return size === 'sm' ? (
+    <img className={className} src="/mapache/head-96.webp" alt="" width={96} height={73} fetchPriority={priority ? 'high' : undefined} />
+  ) : (
+    <img className={className} src="/mapache/head.webp" alt="" width={384} height={292} decoding="async" />
   );
 }
 
@@ -90,10 +100,10 @@ export function Brand({ p, as = 'div' }: { p: LandingProps; as?: 'div' | 'p' }) 
   const Tag = as;
   return (
     <Tag className={s.brand}>
-      <Glint className={s.brandMark} />
+      <Head className={s.brandMark} priority={as === 'div'} />
       <span className={s.brandWord}>
         <b>{first}</b>
-        {rest.length > 0 && <span> {rest.join(' ')}</span>}
+        {rest.length > 0 && <span>{rest.join(' ')}</span>}
       </span>
     </Tag>
   );
@@ -103,8 +113,8 @@ export function Creator({ p }: { p: LandingProps }) {
   return (
     <div className={s.creator}>
       <span className={s.avatar}>
-        {/* TODO(sergi) P7: foto real del miembro (public/mapache/avatar.avif ≤ 120 KB) */}
-        <img src={p.site.avatarUrl} alt={p.site.memberName} width={52} height={52} />
+        {/* Cabeza del logo (site.avatarUrl completo no se lee a 52 px; se usa en fallback y OG). */}
+        <img src="/mapache/head-96.webp" alt={p.site.memberName} width={96} height={73} />
       </span>
       <span className={s.creatorText}>
         <b>
@@ -119,8 +129,9 @@ export function Creator({ p }: { p: LandingProps }) {
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
     <p className={s.eyebrow}>
-      <Glint className={s.eyebrowMark} />
+      <i className={s.hair} aria-hidden="true" />
       <span>{children}</span>
+      <i className={s.hair} aria-hidden="true" />
     </p>
   );
 }
@@ -136,7 +147,7 @@ export function Headline({ text, as = 'h1' }: { text: string; as?: 'h1' | 'h2' }
   );
 }
 
-/** Escena del hero: "letra pequeña" casi invisible a oscuras; la linterna (data-lens) la revela al pasar. */
+/** Escena del hero: la cabeza del logo y la "letra pequeña", casi invisibles a oscuras; la linterna (data-lens) las revela. */
 export function LensScene() {
   return (
     <>
@@ -144,10 +155,12 @@ export function LensScene() {
         <i className={s.glowA} />
         <i className={s.glowB} />
         <div className={s.plan} />
+        <Head size="lg" className={s.ghost} />
       </div>
       <div className={s.lens} data-lens aria-hidden="true">
         <div className={s.lensInner} data-lens-inner>
           <div className={`${s.plan} ${s.planLit}`} />
+          <Head size="lg" className={`${s.ghost} ${s.ghostLit}`} />
         </div>
       </div>
     </>
@@ -335,7 +348,7 @@ export function OfferCard({
 export function SectionHead({ title, sub, aside }: { title: string; sub?: string; aside?: ReactNode }) {
   return (
     <header className={s.secHead} data-reveal="">
-      <Glint className={s.secMark} />
+      <i className={s.secMark} aria-hidden="true" />
       <h2 className={s.h2}>{title}</h2>
       {sub && <p className={s.secSub}>{sub}</p>}
       {aside}
@@ -443,7 +456,7 @@ export function FinalCta({ p, offer, op }: { p: LandingProps; offer: Offer; op: 
     <section className={s.section}>
       <div className={`${s.glass} ${s.final}`} data-reveal="">
         <div className={s.finalSpot} aria-hidden="true" />
-        <Glint className={s.finalMark} outline />
+        <Head size="lg" className={s.finalMark} />
         <Headline text={f.title} as="h2" />
         <p className={s.finalSub}>{f.sub}</p>
         <Cta offer={offer} placement="final" label={fill(f.cta, { operator: op.name })} />

@@ -1,22 +1,23 @@
 // [A2] Mapache · tokens. Paleta centralizada: cuando lleguen las capturas del canal, se cambia SOLO aquí.
-// Concepto: golpe nocturno elegante. Grafito casi negro, luz de linterna cálida y un único color de acción (ámbar).
+// Concepto: noche y mirada afilada. Negro puro, blanco y el dorado del logo como único color de acción.
 import type { CSSProperties } from 'react';
 import type { ThemeTokens } from '@la/contracts';
 
 export const palette = {
-  bg: '#0A0A0C', // grafito noche
-  bgElevated: '#131316',
-  ink2: '#1B1B20', // grafito claro (bordes de plano, sombras)
-  text: '#F5F1E8', // blanco cálido (papel bajo la linterna)
-  textMuted: '#A29D93',
-  textDim: '#6E6A63',
-  amber: '#FFB020', // acción + linterna
-  amberHi: '#FFC95C',
-  amberLo: '#F09A00',
-  ctaText: '#1A1104',
-  cool: '#3A4458', // contraluz frío (farola) para dar profundidad al grafito
-  glass: 'rgba(22,22,26,.58)',
-  glassLite: 'rgba(22,22,26,.95)', // Android gama baja / sin backdrop-filter
+  // Ronda 2: sale del logo del canal (cabeza de mapache en línea dorada sobre negro puro).
+  bg: '#000000', // negro puro, como el fondo del logo: la marca se funde con la página
+  bgElevated: '#0A0A0A',
+  ink2: '#141414',
+  text: '#FFFFFF', // blanco del wordmark "MAPACHE"
+  textMuted: '#A8A298',
+  textDim: '#6F6A62',
+  gold: '#E6B862', // dorado del logo (medido sobre el PNG original)
+  goldHi: '#F5D28E',
+  goldLo: '#C4913C',
+  ctaText: '#1A1207',
+  cool: '#272A31', // contraluz frío muy sutil para dar profundidad al negro
+  glass: 'rgba(20,20,20,.55)',
+  glassLite: 'rgba(16,16,16,.96)', // Android gama baja / sin backdrop-filter
   border: 'rgba(255,255,255,.10)',
   borderHi: 'rgba(255,255,255,.18)',
 } as const;
@@ -28,8 +29,8 @@ export const tokens: ThemeTokens = {
     surface: palette.glass,
     text: palette.text,
     textMuted: palette.textMuted,
-    accent: palette.amber,
-    cta: palette.amber,
+    accent: palette.gold,
+    cta: palette.gold,
     ctaText: palette.ctaText,
     border: palette.border,
   },
@@ -47,9 +48,9 @@ export function cssVars(): CSSProperties {
     '--m-text': p.text,
     '--m-muted': p.textMuted,
     '--m-dim': p.textDim,
-    '--m-amber': p.amber,
-    '--m-amber-hi': p.amberHi,
-    '--m-amber-lo': p.amberLo,
+    '--m-gold': p.gold,
+    '--m-gold-hi': p.goldHi,
+    '--m-gold-lo': p.goldLo,
     '--m-cta-text': p.ctaText,
     '--m-cool': p.cool,
     '--m-glass': p.glass,
